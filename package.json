@@ -2,7 +2,10 @@
     "name": "nodered_test",
     "description": "A Node-RED Project",
     "version": "0.0.1",
-    "dependencies": {},
+    "dependencies": {
+        "node-red-contrib-chatbot": "0.19.14",
+        "node-red-contrib-config": "1.2.1"
+    },
     "node-red": {
         "settings": {
             "flowFile": "flows.json",

@@ -1336,7 +1336,7 @@
         "finalize": "",
         "libs": [],
         "x": 390,
-        "y": 840,
+        "y": 480,
         "wires": [
             [
                 "e44209e7.752698"
@@ -1365,7 +1365,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 200,
-        "y": 840,
+        "y": 480,
         "wires": [
             [
                 "cb1dfcde.fd153"
@@ -1387,7 +1387,7 @@
         "authType": "",
         "senderr": false,
         "x": 600,
-        "y": 840,
+        "y": 480,
         "wires": [
             [
                 "ee306582.f0dde8"
@@ -1408,7 +1408,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 770,
-        "y": 840,
+        "y": 480,
         "wires": []
     },
     {
@@ -1418,7 +1418,7 @@
         "name": "Broadcast",
         "info": "",
         "x": 160,
-        "y": 1080,
+        "y": 720,
         "wires": []
     },
     {
@@ -1443,7 +1443,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 160,
-        "y": 1140,
+        "y": 780,
         "wires": [
             [
                 "80c5e6206dd126f4"
@@ -1462,7 +1462,7 @@
         ],
         "language": "none",
         "x": 600,
-        "y": 1140,
+        "y": 780,
         "wires": [
             [
                 "781ec06407dc1640"
@@ -1480,7 +1480,7 @@
         "errorOutput": false,
         "outputs": 1,
         "x": 810,
-        "y": 1140,
+        "y": 780,
         "wires": [
             []
         ]
@@ -1497,7 +1497,7 @@
         "transport": "facebook",
         "store": "3fd53775.38e008",
         "x": 390,
-        "y": 1140,
+        "y": 780,
         "wires": [
             [
                 "8b1ae39a34577547"
@@ -1511,7 +1511,7 @@
         "name": "Chỉnh mainmenu trên FB",
         "info": "",
         "x": 210,
-        "y": 1220,
+        "y": 860,
         "wires": []
     },
     {
@@ -1524,7 +1524,7 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 220,
-        "y": 1280,
+        "y": 920,
         "wires": [
             [
                 "508667c48bca39dd"
@@ -1553,7 +1553,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 160,
-        "y": 1340,
+        "y": 980,
         "wires": [
             [
                 "508667c48bca39dd"
@@ -1575,7 +1575,7 @@
         "authType": "",
         "senderr": false,
         "x": 730,
-        "y": 1320,
+        "y": 960,
         "wires": [
             [
                 "8c3d11738614bdd3"
@@ -1602,7 +1602,7 @@
         "to": "",
         "reg": false,
         "x": 480,
-        "y": 1320,
+        "y": 960,
         "wires": [
             [
                 "f03b948a34eba552"
@@ -1623,7 +1623,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 930,
-        "y": 1320,
+        "y": 960,
         "wires": []
     },
     {
@@ -1648,7 +1648,7 @@
         "payload": "",
         "payloadType": "str",
         "x": 190,
-        "y": 920,
+        "y": 560,
         "wires": [
             [
                 "9685283cad5ac385"
@@ -1669,7 +1669,7 @@
         "statusVal": "payload",
         "statusType": "auto",
         "x": 510,
-        "y": 920,
+        "y": 560,
         "wires": []
     },
     {
@@ -1692,7 +1692,7 @@
         "to": "",
         "reg": false,
         "x": 340,
-        "y": 920,
+        "y": 560,
         "wires": [
             [
                 "ed2f1d61bb883b3e"
@@ -1711,7 +1711,7 @@
         "finalize": "",
         "libs": [],
         "x": 450,
-        "y": 1000,
+        "y": 640,
         "wires": [
             [
                 "372ea608627a01e5"
@@ -1740,7 +1740,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 180,
-        "y": 1000,
+        "y": 640,
         "wires": [
             [
                 "07746be588fcca26"
@@ -1761,7 +1761,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 670,
-        "y": 1000,
+        "y": 640,
         "wires": []
     },
     {
@@ -1938,7 +1938,7 @@
         "bot": "cd894194643eea2a",
         "botProduction": "cd894194643eea2a",
         "x": 330,
-        "y": 1080,
+        "y": 720,
         "wires": [
             [
                 "80c5e6206dd126f4"
