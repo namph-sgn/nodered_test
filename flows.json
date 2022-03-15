@@ -1,0 +1,1948 @@
+[
+    {
+        "id": "c9cf0916beea2b06",
+        "type": "tab",
+        "label": "RASA Create flow",
+        "disabled": true,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "ac575422ec6f343b",
+        "type": "tab",
+        "label": "bot RED flow",
+        "disabled": true,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "25e44718.693758",
+        "type": "tab",
+        "label": "Test config node",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "0a00a649098e6be0",
+        "type": "subflow",
+        "name": "Flow cơ bản",
+        "info": "",
+        "category": "",
+        "in": [
+            {
+                "x": 60,
+                "y": 160,
+                "wires": [
+                    {
+                        "id": "22626154f2f68eda"
+                    }
+                ]
+            }
+        ],
+        "out": [
+            {
+                "x": 1020,
+                "y": 140,
+                "wires": [
+                    {
+                        "id": "337b6ad23ef66a79",
+                        "port": 0
+                    },
+                    {
+                        "id": "034341cd59e2e579",
+                        "port": 0
+                    },
+                    {
+                        "id": "9b3188ddae703d79",
+                        "port": 0
+                    }
+                ]
+            }
+        ],
+        "env": [],
+        "meta": {},
+        "color": "#DDAA99"
+    },
+    {
+        "id": "2f7f54d8.3f7f5c",
+        "type": "chatbot-context-store",
+        "name": "memory",
+        "contextStorage": "memory",
+        "contextParams": ""
+    },
+    {
+        "id": "3fd53775.38e008",
+        "type": "chatbot-context-store",
+        "name": "memory",
+        "contextStorage": "memory",
+        "contextParams": ""
+    },
+    {
+        "id": "cd894194643eea2a",
+        "type": "chatbot-facebook-node",
+        "botname": "Testbot_dev",
+        "usernames": "Hello",
+        "store": "2f7f54d8.3f7f5c",
+        "log": "",
+        "debug": false,
+        "multiWebHook": true,
+        "profileFields": "first_name,last_name"
+    },
+    {
+        "id": "22626154f2f68eda",
+        "type": "chatbot-rules",
+        "z": "0a00a649098e6be0",
+        "name": "",
+        "rules": [
+            {
+                "type": "command",
+                "command": "/muahang"
+            },
+            {
+                "type": "command",
+                "command": "/goidien"
+            }
+        ],
+        "outputs": 2,
+        "x": 190,
+        "y": 160,
+        "wires": [
+            [
+                "84fc25901920177e"
+            ],
+            [
+                "de0be100339a5997"
+            ]
+        ]
+    },
+    {
+        "id": "de0be100339a5997",
+        "type": "chatbot-message",
+        "z": "0a00a649098e6be0",
+        "name": "",
+        "message": [
+            {
+                "message": "Gọi điện cho người bán: 9999999"
+            }
+        ],
+        "language": "none",
+        "x": 190,
+        "y": 240,
+        "wires": [
+            [
+                "3f6961929590b337"
+            ]
+        ]
+    },
+    {
+        "id": "84fc25901920177e",
+        "type": "chatbot-quick-replies",
+        "z": "0a00a649098e6be0",
+        "name": "",
+        "message": "Bạn muốn mua gì?",
+        "buttons": [
+            {
+                "type": "quick-reply",
+                "label": "CRM",
+                "value": "/crm",
+                "url": ""
+            },
+            {
+                "type": "quick-reply",
+                "label": "Tổng đài",
+                "value": "/tongdai",
+                "url": ""
+            },
+            {
+                "type": "quick-reply",
+                "label": "Chatbot",
+                "value": "/chatbot",
+                "url": ""
+            }
+        ],
+        "x": 340,
+        "y": 140,
+        "wires": [
+            [
+                "821eee9cbf7bec50"
+            ]
+        ]
+    },
+    {
+        "id": "821eee9cbf7bec50",
+        "type": "chatbot-facebook-send",
+        "z": "0a00a649098e6be0",
+        "bot": "cd894194643eea2a",
+        "botProduction": "",
+        "track": true,
+        "passThrough": false,
+        "errorOutput": false,
+        "outputs": 1,
+        "x": 530,
+        "y": 140,
+        "wires": [
+            [
+                "6d050f4ae9bd7bf3"
+            ]
+        ]
+    },
+    {
+        "id": "337b6ad23ef66a79",
+        "type": "chatbot-message",
+        "z": "0a00a649098e6be0",
+        "name": "",
+        "message": [
+            {
+                "message": "Bạn đã đặt mua CRM"
+            }
+        ],
+        "language": "none",
+        "x": 870,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "034341cd59e2e579",
+        "type": "chatbot-message",
+        "z": "0a00a649098e6be0",
+        "name": "",
+        "message": [
+            {
+                "message": "Bạn đã đặt mua tổng đài"
+            }
+        ],
+        "language": "none",
+        "x": 870,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9b3188ddae703d79",
+        "type": "chatbot-message",
+        "z": "0a00a649098e6be0",
+        "name": "",
+        "message": [
+            {
+                "message": "Bạn đã đặt mua chatbot"
+            }
+        ],
+        "language": "none",
+        "x": 870,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6d050f4ae9bd7bf3",
+        "type": "chatbot-rules",
+        "z": "0a00a649098e6be0",
+        "name": "",
+        "rules": [
+            {
+                "type": "command",
+                "command": "/crm"
+            },
+            {
+                "type": "command",
+                "command": "/tongdai"
+            },
+            {
+                "type": "command",
+                "command": "/chatbot"
+            }
+        ],
+        "outputs": 3,
+        "x": 710,
+        "y": 140,
+        "wires": [
+            [
+                "337b6ad23ef66a79"
+            ],
+            [
+                "034341cd59e2e579"
+            ],
+            [
+                "9b3188ddae703d79"
+            ]
+        ]
+    },
+    {
+        "id": "3f6961929590b337",
+        "type": "chatbot-facebook-send",
+        "z": "0a00a649098e6be0",
+        "bot": "cd894194643eea2a",
+        "botProduction": "",
+        "track": false,
+        "passThrough": false,
+        "errorOutput": false,
+        "outputs": 0,
+        "x": 370,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "b2d18992018c5b63",
+        "type": "chatbot-message",
+        "z": "c9cf0916beea2b06",
+        "name": "Chào hỏi",
+        "message": [
+            {
+                "message": "Hello, this is test message!"
+            }
+        ],
+        "language": "none",
+        "x": 600,
+        "y": 460,
+        "wires": [
+            [
+                "06b53df82d8236ef"
+            ]
+        ]
+    },
+    {
+        "id": "1cafcec2c10ceb77",
+        "type": "chatbot-facebook-receive",
+        "z": "c9cf0916beea2b06",
+        "bot": "cd894194643eea2a",
+        "botProduction": "cd894194643eea2a",
+        "x": 170,
+        "y": 480,
+        "wires": [
+            [
+                "9d8626882d8dfb48"
+            ]
+        ]
+    },
+    {
+        "id": "5ce8cd71cb3aacbd",
+        "type": "chatbot-facebook-send",
+        "z": "c9cf0916beea2b06",
+        "bot": "cd894194643eea2a",
+        "botProduction": "cd894194643eea2a",
+        "track": false,
+        "passThrough": false,
+        "errorOutput": false,
+        "outputs": 0,
+        "x": 1050,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "06b53df82d8236ef",
+        "type": "chatbot-image",
+        "z": "c9cf0916beea2b06",
+        "name": "Hình ảnh",
+        "filename": "",
+        "image": "https://media.istockphoto.com/photos/feline-picture-id108226626",
+        "caption": "",
+        "x": 760,
+        "y": 460,
+        "wires": [
+            [
+                "5ce8cd71cb3aacbd",
+                "e58abe7444caff7d"
+            ]
+        ]
+    },
+    {
+        "id": "9d8626882d8dfb48",
+        "type": "chatbot-rules",
+        "z": "c9cf0916beea2b06",
+        "name": "",
+        "rules": [
+            {
+                "type": "command",
+                "command": "/hello"
+            },
+            {
+                "type": "command",
+                "command": "/chaohang"
+            },
+            {
+                "type": "command",
+                "command": "/A"
+            },
+            {
+                "type": "command",
+                "command": "/B"
+            },
+            {
+                "type": "command",
+                "command": "/getstarted"
+            }
+        ],
+        "outputs": 5,
+        "x": 370,
+        "y": 480,
+        "wires": [
+            [
+                "b2d18992018c5b63"
+            ],
+            [
+                "8839ecd205e57fa2"
+            ],
+            [
+                "0c50fc8959440fcf"
+            ],
+            [
+                "23e67788b29d8f14"
+            ],
+            [
+                "608165afb2a22cbd"
+            ]
+        ]
+    },
+    {
+        "id": "8839ecd205e57fa2",
+        "type": "chatbot-message",
+        "z": "c9cf0916beea2b06",
+        "name": "Gọi điện",
+        "message": [
+            {
+                "message": "Chao hang message here!"
+            }
+        ],
+        "language": "none",
+        "x": 600,
+        "y": 540,
+        "wires": [
+            [
+                "af66f4f0be773c28"
+            ]
+        ]
+    },
+    {
+        "id": "af66f4f0be773c28",
+        "type": "chatbot-quick-replies",
+        "z": "c9cf0916beea2b06",
+        "name": "",
+        "message": "Hello, this is quickReplies message",
+        "buttons": [
+            {
+                "type": "quick-reply",
+                "label": "A",
+                "value": "/A",
+                "url": ""
+            },
+            {
+                "type": "quick-reply",
+                "label": "B",
+                "value": "/B",
+                "url": ""
+            }
+        ],
+        "x": 780,
+        "y": 520,
+        "wires": [
+            [
+                "5ce8cd71cb3aacbd",
+                "e58abe7444caff7d"
+            ]
+        ]
+    },
+    {
+        "id": "0c50fc8959440fcf",
+        "type": "chatbot-message",
+        "z": "c9cf0916beea2b06",
+        "name": "Quick Replies 1",
+        "message": [
+            {
+                "message": "A"
+            }
+        ],
+        "language": "none",
+        "x": 620,
+        "y": 620,
+        "wires": [
+            [
+                "5ce8cd71cb3aacbd"
+            ]
+        ]
+    },
+    {
+        "id": "23e67788b29d8f14",
+        "type": "chatbot-message",
+        "z": "c9cf0916beea2b06",
+        "name": "Quick Replies 2",
+        "message": [
+            {
+                "message": "B"
+            }
+        ],
+        "language": "none",
+        "x": 620,
+        "y": 680,
+        "wires": [
+            [
+                "5ce8cd71cb3aacbd"
+            ]
+        ]
+    },
+    {
+        "id": "56506615c3ee2261",
+        "type": "comment",
+        "z": "c9cf0916beea2b06",
+        "name": "Chỉnh mainmenu trên FB",
+        "info": "",
+        "x": 210,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "2daee86c2ffbff9c",
+        "type": "http in",
+        "z": "c9cf0916beea2b06",
+        "name": "",
+        "url": "/changeFBMainmenu",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 220,
+        "y": 300,
+        "wires": [
+            [
+                "4952bc45edbb5945"
+            ]
+        ]
+    },
+    {
+        "id": "304a1af62def0b7f",
+        "type": "inject",
+        "z": "c9cf0916beea2b06",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 360,
+        "wires": [
+            [
+                "4952bc45edbb5945"
+            ]
+        ]
+    },
+    {
+        "id": "2a5fcf780f18e350",
+        "type": "http request",
+        "z": "c9cf0916beea2b06",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://graph.facebook.com/v13.0/me/messenger_profile?access_token=EAAHe6qOa2KIBAAeD8DjZAROzxCornHBHOeEYNuFvvzSfybJGZB4YlJcFrZBs0n1SBtXNkfYQBMTMv0XnxyZC8MoMg4sHKxJq4eDC3VbPwdNi83XNaZBl0DalYD5u1Dh2G9312SfDoxpQZAwpqYXSPRbS9WbhWZBjOEC4RhdZAZAHKlOicgFiqkInW",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 730,
+        "y": 340,
+        "wires": [
+            [
+                "1a0e6c2249d6d737"
+            ]
+        ]
+    },
+    {
+        "id": "4952bc45edbb5945",
+        "type": "change",
+        "z": "c9cf0916beea2b06",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"persistent_menu\":[{\"locale\":\"default\",\"composer_input_disabled\":false,\"call_to_actions\":[{\"type\":\"postback\",\"title\":\"Bạn muốn mua gì?\",\"payload\":\"/muahang\"},{\"type\":\"postback\",\"title\":\"Gọi điện cho người bán\",\"payload\":\"/goidien\"},{\"type\":\"web_url\",\"title\":\"Đến Website\",\"url\":\"https://antbuddy.com/\",\"webview_height_ratio\":\"full\"},{\"type\":\"web_url\",\"title\":\"Đến Google\",\"url\":\"https://google.com/\",\"webview_height_ratio\":\"full\"}]}]}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 480,
+        "y": 340,
+        "wires": [
+            [
+                "2a5fcf780f18e350"
+            ]
+        ]
+    },
+    {
+        "id": "1a0e6c2249d6d737",
+        "type": "debug",
+        "z": "c9cf0916beea2b06",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 930,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "4a87799ba99371a3",
+        "type": "comment",
+        "z": "c9cf0916beea2b06",
+        "name": "Tạo flows",
+        "info": "",
+        "x": 140,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "e58abe7444caff7d",
+        "type": "debug",
+        "z": "c9cf0916beea2b06",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1050,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "84468c1c2ec5f547",
+        "type": "catch",
+        "z": "c9cf0916beea2b06",
+        "name": "Catch all Error",
+        "scope": null,
+        "uncaught": false,
+        "x": 150,
+        "y": 860,
+        "wires": [
+            [
+                "80c0305a2ab65b70"
+            ]
+        ]
+    },
+    {
+        "id": "80c0305a2ab65b70",
+        "type": "debug",
+        "z": "c9cf0916beea2b06",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 610,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "abbb25647f80dc2a",
+        "type": "chatbot-facebook-receive",
+        "z": "c9cf0916beea2b06",
+        "bot": "cd894194643eea2a",
+        "botProduction": "cd894194643eea2a",
+        "x": 170,
+        "y": 780,
+        "wires": [
+            [
+                "324399f71a97f36d"
+            ]
+        ]
+    },
+    {
+        "id": "ab2a02c24da5393d",
+        "type": "chatbot-facebook-send",
+        "z": "c9cf0916beea2b06",
+        "bot": "cd894194643eea2a",
+        "botProduction": "cd894194643eea2a",
+        "track": false,
+        "passThrough": false,
+        "errorOutput": false,
+        "outputs": 0,
+        "x": 750,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "324399f71a97f36d",
+        "type": "subflow:0a00a649098e6be0",
+        "z": "c9cf0916beea2b06",
+        "name": "Flow anh Vinh",
+        "x": 420,
+        "y": 780,
+        "wires": [
+            [
+                "ab2a02c24da5393d"
+            ]
+        ]
+    },
+    {
+        "id": "45b7a7fade50deb1",
+        "type": "comment",
+        "z": "c9cf0916beea2b06",
+        "name": "Chỉnh get started trên FB",
+        "info": "",
+        "x": 210,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "bd783374e553fee8",
+        "type": "http in",
+        "z": "c9cf0916beea2b06",
+        "name": "",
+        "url": "/changeFBWelcomeMessage",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 240,
+        "y": 120,
+        "wires": [
+            [
+                "8c8c6d2fc60c4f18"
+            ]
+        ]
+    },
+    {
+        "id": "7561fc41b1699b65",
+        "type": "inject",
+        "z": "c9cf0916beea2b06",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 180,
+        "wires": [
+            [
+                "8c8c6d2fc60c4f18"
+            ]
+        ]
+    },
+    {
+        "id": "2d5ca2432597d571",
+        "type": "http request",
+        "z": "c9cf0916beea2b06",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://graph.facebook.com/v13.0/me/messenger_profile?access_token=EAAHe6qOa2KIBAAeD8DjZAROzxCornHBHOeEYNuFvvzSfybJGZB4YlJcFrZBs0n1SBtXNkfYQBMTMv0XnxyZC8MoMg4sHKxJq4eDC3VbPwdNi83XNaZBl0DalYD5u1Dh2G9312SfDoxpQZAwpqYXSPRbS9WbhWZBjOEC4RhdZAZAHKlOicgFiqkInW",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 730,
+        "y": 160,
+        "wires": [
+            [
+                "cb406baeafaf4ae0"
+            ]
+        ]
+    },
+    {
+        "id": "8c8c6d2fc60c4f18",
+        "type": "change",
+        "z": "c9cf0916beea2b06",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"get_started\":{\"payload\":\"/getstarted\"}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 480,
+        "y": 160,
+        "wires": [
+            [
+                "2d5ca2432597d571"
+            ]
+        ]
+    },
+    {
+        "id": "cb406baeafaf4ae0",
+        "type": "debug",
+        "z": "c9cf0916beea2b06",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 930,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "608165afb2a22cbd",
+        "type": "chatbot-message",
+        "z": "c9cf0916beea2b06",
+        "name": "Chào hỏi",
+        "message": [
+            {
+                "message": "Hello, this is test message!"
+            }
+        ],
+        "language": "none",
+        "x": 600,
+        "y": 740,
+        "wires": [
+            [
+                "5ce8cd71cb3aacbd"
+            ]
+        ]
+    },
+    {
+        "id": "a1022e6f0c345829",
+        "type": "catch",
+        "z": "ac575422ec6f343b",
+        "name": "Catch all Error",
+        "scope": null,
+        "uncaught": false,
+        "x": 290,
+        "y": 820,
+        "wires": [
+            [
+                "0d47a1bcc7ae134f"
+            ]
+        ]
+    },
+    {
+        "id": "0d47a1bcc7ae134f",
+        "type": "debug",
+        "z": "ac575422ec6f343b",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 530,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "d576f8e67b450183",
+        "type": "comment",
+        "z": "ac575422ec6f343b",
+        "name": "Broadcast",
+        "info": "",
+        "x": 280,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "39bec0f33c2343c8",
+        "type": "inject",
+        "z": "ac575422ec6f343b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 280,
+        "y": 700,
+        "wires": [
+            [
+                "d5dc7be37e2e9345"
+            ]
+        ]
+    },
+    {
+        "id": "705c1aca7ef5c845",
+        "type": "chatbot-message",
+        "z": "ac575422ec6f343b",
+        "name": "Chào hỏi",
+        "message": [
+            {
+                "message": "Broadcast message"
+            }
+        ],
+        "language": "none",
+        "x": 720,
+        "y": 700,
+        "wires": [
+            [
+                "af333d2ec6bab060"
+            ]
+        ]
+    },
+    {
+        "id": "af333d2ec6bab060",
+        "type": "chatbot-facebook-send",
+        "z": "ac575422ec6f343b",
+        "bot": "cd894194643eea2a",
+        "botProduction": "cd894194643eea2a",
+        "track": false,
+        "passThrough": true,
+        "errorOutput": false,
+        "outputs": 1,
+        "x": 930,
+        "y": 700,
+        "wires": [
+            [
+                "271dc540b966fc57"
+            ]
+        ]
+    },
+    {
+        "id": "16b0d7c59c9f7ee1",
+        "type": "inject",
+        "z": "ac575422ec6f343b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 300,
+        "y": 480,
+        "wires": [
+            [
+                "f992ad1bc5c03e5a"
+            ]
+        ]
+    },
+    {
+        "id": "f992ad1bc5c03e5a",
+        "type": "http request",
+        "z": "ac575422ec6f343b",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://graph.facebook.com/v13.0/me/accounts?access_token=EAAM4W4WEQV0BABpeFQOV3eLeHHnpqrkFTja00BX1hQb0WSYEs15WZBEJ7OXV3MNZC2yfjuzpjDn1ZBJxnlIn30dk1Eiff1UTsQBHPEdvlfSlBBftm4r6OMTYy3CZB0C7xNp6ckQ1UesQ8oLZC7mVoqLemu6UOc4LpLPpmyZCQpbie6OYMzWvBO1ZAaU7juJsqIZD",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 490,
+        "y": 480,
+        "wires": [
+            [
+                "0fca949b32d0c1f8"
+            ]
+        ]
+    },
+    {
+        "id": "0fca949b32d0c1f8",
+        "type": "debug",
+        "z": "ac575422ec6f343b",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 710,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "d5dc7be37e2e9345",
+        "type": "chatbot-conversation",
+        "z": "ac575422ec6f343b",
+        "name": "",
+        "botDevelopment": "cd894194643eea2a",
+        "botProduction": "cd894194643eea2a",
+        "chatId": "4398380590200162",
+        "userId": "",
+        "transport": "facebook",
+        "store": "3fd53775.38e008",
+        "x": 510,
+        "y": 700,
+        "wires": [
+            [
+                "705c1aca7ef5c845"
+            ]
+        ]
+    },
+    {
+        "id": "640bb1b1bb2e063b",
+        "type": "chatbot-facebook-receive",
+        "z": "ac575422ec6f343b",
+        "bot": "cd894194643eea2a",
+        "botProduction": "cd894194643eea2a",
+        "x": 330,
+        "y": 540,
+        "wires": [
+            [
+                "271dc540b966fc57",
+                "866834a2e74caa91"
+            ]
+        ]
+    },
+    {
+        "id": "866834a2e74caa91",
+        "type": "chatbot-message",
+        "z": "ac575422ec6f343b",
+        "name": "Chào hỏi",
+        "message": [
+            {
+                "message": "Hello, this is test message!"
+            }
+        ],
+        "language": "none",
+        "x": 660,
+        "y": 540,
+        "wires": [
+            [
+                "90d408caa12de8ed"
+            ]
+        ]
+    },
+    {
+        "id": "90d408caa12de8ed",
+        "type": "chatbot-facebook-send",
+        "z": "ac575422ec6f343b",
+        "bot": "cd894194643eea2a",
+        "botProduction": "cd894194643eea2a",
+        "track": false,
+        "passThrough": true,
+        "errorOutput": false,
+        "outputs": 1,
+        "x": 870,
+        "y": 540,
+        "wires": [
+            [
+                "271dc540b966fc57"
+            ]
+        ]
+    },
+    {
+        "id": "271dc540b966fc57",
+        "type": "link out",
+        "z": "ac575422ec6f343b",
+        "name": "",
+        "mode": "link",
+        "links": [
+            "56544e9b142a1e65"
+        ],
+        "x": 1105,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "5c8a6eb0f697f738",
+        "type": "debug",
+        "z": "ac575422ec6f343b",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1190,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "56544e9b142a1e65",
+        "type": "link in",
+        "z": "ac575422ec6f343b",
+        "name": "",
+        "links": [
+            "271dc540b966fc57"
+        ],
+        "x": 1105,
+        "y": 780,
+        "wires": [
+            [
+                "5c8a6eb0f697f738"
+            ]
+        ]
+    },
+    {
+        "id": "7af55eddec1a3080",
+        "type": "config",
+        "z": "ac575422ec6f343b",
+        "name": "",
+        "properties": [
+            {
+                "p": "",
+                "pt": "flow",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "active": true,
+        "x": 370,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "bd1b9414.8b32b8",
+        "type": "config",
+        "z": "25e44718.693758",
+        "name": "Install Linux",
+        "properties": [
+            {
+                "p": "com1.PC_Stability",
+                "pt": "global",
+                "to": "Well done! Stable system.",
+                "tot": "str"
+            }
+        ],
+        "active": true,
+        "x": 410,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "d8e9f39e.653ea",
+        "type": "inject",
+        "z": "25e44718.693758",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 210,
+        "y": 180,
+        "wires": [
+            [
+                "9e818396.ce9d2"
+            ]
+        ]
+    },
+    {
+        "id": "2a388509.ad5742",
+        "type": "inject",
+        "z": "25e44718.693758",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "0.1",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 210,
+        "y": 240,
+        "wires": [
+            [
+                "57ac7186.93afd8"
+            ]
+        ]
+    },
+    {
+        "id": "f036c088.c54bd8",
+        "type": "debug",
+        "z": "25e44718.693758",
+        "name": "PC_Stability",
+        "active": true,
+        "tosidebar": false,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 610,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "57ac7186.93afd8",
+        "type": "change",
+        "z": "25e44718.693758",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "com1.PC_Stability",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 420,
+        "y": 240,
+        "wires": [
+            [
+                "f036c088.c54bd8"
+            ]
+        ]
+    },
+    {
+        "id": "9730e6c0.d46aa",
+        "type": "inject",
+        "z": "25e44718.693758",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 210,
+        "y": 120,
+        "wires": [
+            [
+                "bd1b9414.8b32b8"
+            ]
+        ]
+    },
+    {
+        "id": "9e818396.ce9d2",
+        "type": "config",
+        "z": "25e44718.693758",
+        "name": "Install Win",
+        "properties": [
+            {
+                "p": "com1.PC_Stability",
+                "pt": "global",
+                "to": "Unstable system. May crash.",
+                "tot": "str"
+            }
+        ],
+        "active": false,
+        "x": 410,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "cb1dfcde.fd153",
+        "type": "function",
+        "z": "25e44718.693758",
+        "name": "set payload and headers",
+        "func": "msg.payload = \"data to post\";\nmsg.headers = {};\nmsg.headers['X-Auth-User'] = 'mike';\nmsg.headers['X-Auth-Key'] = 'fred-key';\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 840,
+        "wires": [
+            [
+                "e44209e7.752698"
+            ]
+        ]
+    },
+    {
+        "id": "dcf34aab.218928",
+        "type": "inject",
+        "z": "25e44718.693758",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 200,
+        "y": 840,
+        "wires": [
+            [
+                "cb1dfcde.fd153"
+            ]
+        ]
+    },
+    {
+        "id": "e44209e7.752698",
+        "type": "http request",
+        "z": "25e44718.693758",
+        "name": "post to HttpBin",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://httpbin.org/post",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 600,
+        "y": 840,
+        "wires": [
+            [
+                "ee306582.f0dde8"
+            ]
+        ]
+    },
+    {
+        "id": "ee306582.f0dde8",
+        "type": "debug",
+        "z": "25e44718.693758",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 770,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "eafc5964f3b17bf1",
+        "type": "comment",
+        "z": "25e44718.693758",
+        "name": "Broadcast",
+        "info": "",
+        "x": 160,
+        "y": 1080,
+        "wires": []
+    },
+    {
+        "id": "b936eedf7edd348c",
+        "type": "inject",
+        "z": "25e44718.693758",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 1140,
+        "wires": [
+            [
+                "80c5e6206dd126f4"
+            ]
+        ]
+    },
+    {
+        "id": "8b1ae39a34577547",
+        "type": "chatbot-message",
+        "z": "25e44718.693758",
+        "name": "Chào hỏi",
+        "message": [
+            {
+                "message": "Broadcast message"
+            }
+        ],
+        "language": "none",
+        "x": 600,
+        "y": 1140,
+        "wires": [
+            [
+                "781ec06407dc1640"
+            ]
+        ]
+    },
+    {
+        "id": "781ec06407dc1640",
+        "type": "chatbot-facebook-send",
+        "z": "25e44718.693758",
+        "bot": "cd894194643eea2a",
+        "botProduction": "cd894194643eea2a",
+        "track": false,
+        "passThrough": true,
+        "errorOutput": false,
+        "outputs": 1,
+        "x": 810,
+        "y": 1140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "80c5e6206dd126f4",
+        "type": "chatbot-conversation",
+        "z": "25e44718.693758",
+        "name": "",
+        "botDevelopment": "cd894194643eea2a",
+        "botProduction": "cd894194643eea2a",
+        "chatId": "4398380590200162",
+        "userId": "",
+        "transport": "facebook",
+        "store": "3fd53775.38e008",
+        "x": 390,
+        "y": 1140,
+        "wires": [
+            [
+                "8b1ae39a34577547"
+            ]
+        ]
+    },
+    {
+        "id": "1ebf6f89184d6945",
+        "type": "comment",
+        "z": "25e44718.693758",
+        "name": "Chỉnh mainmenu trên FB",
+        "info": "",
+        "x": 210,
+        "y": 1220,
+        "wires": []
+    },
+    {
+        "id": "9b1b1d2d9ffd3ea7",
+        "type": "http in",
+        "z": "25e44718.693758",
+        "name": "",
+        "url": "/changeFBMainmenu",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 220,
+        "y": 1280,
+        "wires": [
+            [
+                "508667c48bca39dd"
+            ]
+        ]
+    },
+    {
+        "id": "5d151a30f564a655",
+        "type": "inject",
+        "z": "25e44718.693758",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 1340,
+        "wires": [
+            [
+                "508667c48bca39dd"
+            ]
+        ]
+    },
+    {
+        "id": "f03b948a34eba552",
+        "type": "http request",
+        "z": "25e44718.693758",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://graph.facebook.com/v13.0/me/messenger_profile?access_token=EAAHe6qOa2KIBAAeD8DjZAROzxCornHBHOeEYNuFvvzSfybJGZB4YlJcFrZBs0n1SBtXNkfYQBMTMv0XnxyZC8MoMg4sHKxJq4eDC3VbPwdNi83XNaZBl0DalYD5u1Dh2G9312SfDoxpQZAwpqYXSPRbS9WbhWZBjOEC4RhdZAZAHKlOicgFiqkInW",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 730,
+        "y": 1320,
+        "wires": [
+            [
+                "8c3d11738614bdd3"
+            ]
+        ]
+    },
+    {
+        "id": "508667c48bca39dd",
+        "type": "change",
+        "z": "25e44718.693758",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"persistent_menu\":[{\"locale\":\"default\",\"composer_input_disabled\":false,\"call_to_actions\":[{\"type\":\"postback\",\"title\":\"Bạn muốn mua gì?\",\"payload\":\"/muahang\"},{\"type\":\"postback\",\"title\":\"Gọi điện cho người bán\",\"payload\":\"/goidien\"},{\"type\":\"web_url\",\"title\":\"Đến Website\",\"url\":\"https://antbuddy.com/\",\"webview_height_ratio\":\"full\"},{\"type\":\"web_url\",\"title\":\"Đến Google\",\"url\":\"https://google.com/\",\"webview_height_ratio\":\"full\"}]}]}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 480,
+        "y": 1320,
+        "wires": [
+            [
+                "f03b948a34eba552"
+            ]
+        ]
+    },
+    {
+        "id": "8c3d11738614bdd3",
+        "type": "debug",
+        "z": "25e44718.693758",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 930,
+        "y": 1320,
+        "wires": []
+    },
+    {
+        "id": "41f6dbed246ee31b",
+        "type": "inject",
+        "z": "25e44718.693758",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 190,
+        "y": 920,
+        "wires": [
+            [
+                "9685283cad5ac385"
+            ]
+        ]
+    },
+    {
+        "id": "ed2f1d61bb883b3e",
+        "type": "debug",
+        "z": "25e44718.693758",
+        "name": "PC_Stability",
+        "active": true,
+        "tosidebar": false,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 510,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "9685283cad5ac385",
+        "type": "change",
+        "z": "25e44718.693758",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "PC_Stability",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 340,
+        "y": 920,
+        "wires": [
+            [
+                "ed2f1d61bb883b3e"
+            ]
+        ]
+    },
+    {
+        "id": "07746be588fcca26",
+        "type": "function",
+        "z": "25e44718.693758",
+        "name": "get message node",
+        "func": "msg = RED.nodes.getNode(config);\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 450,
+        "y": 1000,
+        "wires": [
+            [
+                "372ea608627a01e5"
+            ]
+        ]
+    },
+    {
+        "id": "1b2696b570757aec",
+        "type": "inject",
+        "z": "25e44718.693758",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 1000,
+        "wires": [
+            [
+                "07746be588fcca26"
+            ]
+        ]
+    },
+    {
+        "id": "372ea608627a01e5",
+        "type": "debug",
+        "z": "25e44718.693758",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 670,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "1efe1314c5251a93",
+        "type": "config",
+        "z": "25e44718.693758",
+        "name": "Install Linux",
+        "properties": [
+            {
+                "p": "com2.PC_Stability",
+                "pt": "global",
+                "to": "Well done! Stable system.",
+                "tot": "str"
+            }
+        ],
+        "active": true,
+        "x": 410,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "48f55fd5e71e33db",
+        "type": "inject",
+        "z": "25e44718.693758",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 210,
+        "y": 360,
+        "wires": [
+            [
+                "f45a638b7f44b044"
+            ]
+        ]
+    },
+    {
+        "id": "08ac75dc42ed6b24",
+        "type": "inject",
+        "z": "25e44718.693758",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "0.1",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 210,
+        "y": 420,
+        "wires": [
+            [
+                "adaf14bad03b458c"
+            ]
+        ]
+    },
+    {
+        "id": "95785b0a17e25bbe",
+        "type": "debug",
+        "z": "25e44718.693758",
+        "name": "PC_Stability",
+        "active": true,
+        "tosidebar": false,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 610,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "adaf14bad03b458c",
+        "type": "change",
+        "z": "25e44718.693758",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "com2.PC_Stability",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 420,
+        "y": 420,
+        "wires": [
+            [
+                "95785b0a17e25bbe"
+            ]
+        ]
+    },
+    {
+        "id": "507706b72640d731",
+        "type": "inject",
+        "z": "25e44718.693758",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 210,
+        "y": 300,
+        "wires": [
+            [
+                "1efe1314c5251a93"
+            ]
+        ]
+    },
+    {
+        "id": "f45a638b7f44b044",
+        "type": "config",
+        "z": "25e44718.693758",
+        "name": "Install Win",
+        "properties": [
+            {
+                "p": "com2.PC_Stability",
+                "pt": "global",
+                "to": "Unstable system. May crash.",
+                "tot": "str"
+            }
+        ],
+        "active": false,
+        "x": 410,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "e570d684e303cd01",
+        "type": "chatbot-facebook-receive",
+        "z": "25e44718.693758",
+        "bot": "cd894194643eea2a",
+        "botProduction": "cd894194643eea2a",
+        "x": 330,
+        "y": 1080,
+        "wires": [
+            [
+                "80c5e6206dd126f4"
+            ]
+        ]
+    }
+]
