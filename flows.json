@@ -23,6 +23,14 @@
         "info": ""
     },
     {
+        "id": "1a4e6507da790bd3",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "0a00a649098e6be0",
         "type": "subflow",
         "name": "Flow cơ bản",
@@ -1943,6 +1951,226 @@
             [
                 "80c5e6206dd126f4"
             ]
+        ]
+    },
+    {
+        "id": "7ed7753d71e5bac3",
+        "type": "http in",
+        "z": "1a4e6507da790bd3",
+        "name": "",
+        "url": "/connectFB",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 260,
+        "wires": [
+            [
+                "7643ef6d15d09a88"
+            ]
+        ]
+    },
+    {
+        "id": "4fe8b44e45c23faa",
+        "type": "change",
+        "z": "1a4e6507da790bd3",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.label",
+                "pt": "msg",
+                "to": "Hello",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 260,
+        "y": 320,
+        "wires": [
+            [
+                "509e13a8bfe2972d"
+            ]
+        ]
+    },
+    {
+        "id": "b9bc53bbdcb747ac",
+        "type": "debug",
+        "z": "1a4e6507da790bd3",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 790,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "a8bbd534395e2c1b",
+        "type": "http response",
+        "z": "1a4e6507da790bd3",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 500,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "8072b64e1e404954",
+        "type": "http request",
+        "z": "1a4e6507da790bd3",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:1880/connectFB",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 390,
+        "y": 160,
+        "wires": [
+            [
+                "b9bc53bbdcb747ac"
+            ]
+        ]
+    },
+    {
+        "id": "c966a22fab11d129",
+        "type": "inject",
+        "z": "1a4e6507da790bd3",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 220,
+        "y": 160,
+        "wires": [
+            [
+                "8072b64e1e404954"
+            ]
+        ]
+    },
+    {
+        "id": "179fd2d116891c22",
+        "type": "catch",
+        "z": "1a4e6507da790bd3",
+        "name": "",
+        "scope": null,
+        "uncaught": false,
+        "x": 220,
+        "y": 440,
+        "wires": [
+            [
+                "24a575855046560a"
+            ]
+        ]
+    },
+    {
+        "id": "24a575855046560a",
+        "type": "debug",
+        "z": "1a4e6507da790bd3",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 450,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "509e13a8bfe2972d",
+        "type": "change",
+        "z": "1a4e6507da790bd3",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.nodes",
+                "pt": "msg",
+                "to": "[{\"type\":\"inject\",\"name\":\"\",\"props\":[{\"p\":\"payload\"},{\"p\":\"topic\",\"vt\":\"str\"}],\"repeat\":\"\",\"crontab\":\"\",\"once\":false,\"onceDelay\":0.1,\"topic\":\"\",\"payload\":\"\",\"payloadType\":\"date\",\"x\":380,\"y\":240,\"wires\":[[]]}]",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 270,
+        "y": 380,
+        "wires": [
+            [
+                "b9bc53bbdcb747ac",
+                "a8bbd534395e2c1b"
+            ]
+        ]
+    },
+    {
+        "id": "7643ef6d15d09a88",
+        "type": "template",
+        "z": "1a4e6507da790bd3",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "json",
+        "syntax": "mustache",
+        "template": "{\n    \"label\": \"\",\n    \"nodes\": [],\n    \"configs\": []\n}",
+        "output": "json",
+        "x": 280,
+        "y": 260,
+        "wires": [
+            [
+                "4fe8b44e45c23faa"
+            ]
+        ]
+    },
+    {
+        "id": "ad4198655dc2fa25",
+        "type": "http request",
+        "z": "1a4e6507da790bd3",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:1880/flow",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 670,
+        "y": 400,
+        "wires": [
+            []
         ]
     }
 ]
