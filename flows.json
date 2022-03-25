@@ -3,7 +3,7 @@
         "id": "c9cf0916beea2b06",
         "type": "tab",
         "label": "RASA Create flow",
-        "disabled": true,
+        "disabled": false,
         "info": "",
         "env": []
     },
@@ -15,17 +15,25 @@
         "info": ""
     },
     {
-        "id": "1a4e6507da790bd3",
+        "id": "6b7a48cdf37ecce9",
         "type": "tab",
-        "label": "Flow 1",
+        "label": "Example mongodb4",
+        "disabled": true,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "6601c4c791e5b30b",
+        "type": "tab",
+        "label": "Mongodb API",
         "disabled": false,
         "info": "",
         "env": []
     },
     {
-        "id": "6b7a48cdf37ecce9",
+        "id": "1a4e6507da790bd3",
         "type": "tab",
-        "label": "Example mongodb4",
+        "label": "Flow 1",
         "disabled": false,
         "info": "",
         "env": []
@@ -129,6 +137,17 @@
         "uri": "mongodb://localhost:27017",
         "advanced": "",
         "uriTabActive": "tab-uri-advanced"
+    },
+    {
+        "id": "6f9adb2683cde25d",
+        "type": "chatbot-crm-node",
+        "botname": "623a93131bef2dd49c2fa0f1",
+        "usernames": "",
+        "store": "2f7f54d8.3f7f5c",
+        "log": "",
+        "debug": false,
+        "multiWebHook": false,
+        "profileFields": "first_name,last_name"
     },
     {
         "id": "22626154f2f68eda",
@@ -1677,343 +1696,20 @@
         ]
     },
     {
-        "id": "7ed7753d71e5bac3",
-        "type": "http in",
-        "z": "1a4e6507da790bd3",
-        "name": "",
-        "url": "/connectFB",
-        "method": "post",
-        "upload": false,
-        "swaggerDoc": "",
+        "id": "491c8692701b332b",
+        "type": "function",
+        "z": "25e44718.693758",
+        "name": "Lấy dữ liệu từ headers và params",
+        "func": "msg.headers = msg.req.headers;\nmsg.body = msg.req.body;\nmsg.params = msg.req.params;\nmsg.query = msg.req.query;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
         "x": 240,
-        "y": 240,
+        "y": 1080,
         "wires": [
-            [
-                "a64b0a610cbf0d4c"
-            ]
-        ]
-    },
-    {
-        "id": "b9bc53bbdcb747ac",
-        "type": "debug",
-        "z": "1a4e6507da790bd3",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 790,
-        "y": 120,
-        "wires": []
-    },
-    {
-        "id": "8072b64e1e404954",
-        "type": "http request",
-        "z": "1a4e6507da790bd3",
-        "name": "",
-        "method": "POST",
-        "ret": "txt",
-        "paytoqs": "ignore",
-        "url": "http://localhost:1880/connectFB?query={{{query}}}",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "authType": "",
-        "senderr": false,
-        "x": 550,
-        "y": 160,
-        "wires": [
-            [
-                "b9bc53bbdcb747ac"
-            ]
-        ]
-    },
-    {
-        "id": "c966a22fab11d129",
-        "type": "inject",
-        "z": "1a4e6507da790bd3",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 220,
-        "y": 160,
-        "wires": [
-            [
-                "66831e1a33dda2f2"
-            ]
-        ]
-    },
-    {
-        "id": "179fd2d116891c22",
-        "type": "catch",
-        "z": "1a4e6507da790bd3",
-        "name": "",
-        "scope": null,
-        "uncaught": false,
-        "x": 100,
-        "y": 840,
-        "wires": [
-            [
-                "24a575855046560a",
-                "2b188495750b5350"
-            ]
-        ]
-    },
-    {
-        "id": "24a575855046560a",
-        "type": "debug",
-        "z": "1a4e6507da790bd3",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 330,
-        "y": 840,
-        "wires": []
-    },
-    {
-        "id": "f0376db7a2b9d34b",
-        "type": "inject",
-        "z": "1a4e6507da790bd3",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": "0",
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 140,
-        "y": 740,
-        "wires": [
-            [
-                "9e24663a28c281fe"
-            ]
-        ]
-    },
-    {
-        "id": "9e24663a28c281fe",
-        "type": "function",
-        "z": "1a4e6507da790bd3",
-        "name": "set payload",
-        "func": "msg.payload = [{name: 'marina', age: 28}];\nmsg.headers = msg.req.headers;\nmsg.params = msg.req.params;\nmsg.query = msg.req.query;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 310,
-        "y": 740,
-        "wires": [
-            [
-                "0005b5455e019765",
-                "9f2e6927550fc338"
-            ]
-        ]
-    },
-    {
-        "id": "0005b5455e019765",
-        "type": "mongodb4",
-        "z": "1a4e6507da790bd3",
-        "clientNode": "e2bc7ac9aa77279e",
-        "collection": "test",
-        "operation": "insertOne",
-        "output": "toArray",
-        "name": "",
-        "x": 500,
-        "y": 740,
-        "wires": [
-            [
-                "0e188b5063d96fa3",
-                "d91585edfe8d3462"
-            ]
-        ]
-    },
-    {
-        "id": "0e188b5063d96fa3",
-        "type": "debug",
-        "z": "1a4e6507da790bd3",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 690,
-        "y": 660,
-        "wires": []
-    },
-    {
-        "id": "7f350f10461f0ef3",
-        "type": "http in",
-        "z": "1a4e6507da790bd3",
-        "name": "",
-        "url": "/connectFBtest",
-        "method": "post",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 140,
-        "y": 660,
-        "wires": [
-            [
-                "9e24663a28c281fe"
-            ]
-        ]
-    },
-    {
-        "id": "d91585edfe8d3462",
-        "type": "http response",
-        "z": "1a4e6507da790bd3",
-        "name": "",
-        "statusCode": "200",
-        "headers": {},
-        "x": 700,
-        "y": 740,
-        "wires": []
-    },
-    {
-        "id": "9f2e6927550fc338",
-        "type": "debug",
-        "z": "1a4e6507da790bd3",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 690,
-        "y": 600,
-        "wires": []
-    },
-    {
-        "id": "a64b0a610cbf0d4c",
-        "type": "function",
-        "z": "1a4e6507da790bd3",
-        "name": "set payload",
-        "func": "msg.headers = msg.req.headers;\nmsg.body = msg.req.body;\nmsg.params = msg.req.params;\nmsg.query = msg.req.query;\nmsg.payload = [{pageAccessToken: msg.body['pageAccessToken'], appSecret: msg.body['appSecret'], pageName: msg.body['pageName']}];\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 430,
-        "y": 240,
-        "wires": [
-            [
-                "2a1a3961dddf0cfe",
-                "38d676b7c580705b"
-            ]
-        ]
-    },
-    {
-        "id": "2a1a3961dddf0cfe",
-        "type": "debug",
-        "z": "1a4e6507da790bd3",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 770,
-        "y": 300,
-        "wires": []
-    },
-    {
-        "id": "66831e1a33dda2f2",
-        "type": "function",
-        "z": "1a4e6507da790bd3",
-        "name": "set payload",
-        "func": "msg.payload = {\"pageAccessToken\": \"hello\", \"appSecret\": \"appsecret\", \"pageName\": \"pageName\"};\nmsg.headers = {};\nmsg.headers['X-Auth-User'] = 'mike';\nmsg.headers['X-Auth-Key'] = 'fred-key';\nmsg.query = \"querykey\";\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 390,
-        "y": 160,
-        "wires": [
-            [
-                "8072b64e1e404954"
-            ]
-        ]
-    },
-    {
-        "id": "3db666cfb6b68438",
-        "type": "http response",
-        "z": "1a4e6507da790bd3",
-        "name": "",
-        "statusCode": "200",
-        "headers": {},
-        "x": 780,
-        "y": 240,
-        "wires": []
-    },
-    {
-        "id": "2b188495750b5350",
-        "type": "http response",
-        "z": "1a4e6507da790bd3",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 310,
-        "y": 900,
-        "wires": []
-    },
-    {
-        "id": "38d676b7c580705b",
-        "type": "mongodb4",
-        "z": "1a4e6507da790bd3",
-        "clientNode": "e2bc7ac9aa77279e",
-        "collection": "test",
-        "operation": "insertOne",
-        "output": "toArray",
-        "name": "",
-        "x": 620,
-        "y": 240,
-        "wires": [
-            [
-                "3db666cfb6b68438"
-            ]
+            []
         ]
     },
     {
@@ -2497,6 +2193,975 @@
         "statusType": "auto",
         "x": 730,
         "y": 380,
+        "wires": []
+    },
+    {
+        "id": "b93d17fa7adf104d",
+        "type": "http in",
+        "z": "6601c4c791e5b30b",
+        "name": "",
+        "url": "/get-all-connected-fb-page",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 230,
+        "y": 140,
+        "wires": [
+            [
+                "c92ed5c33c1c3296"
+            ]
+        ]
+    },
+    {
+        "id": "c92ed5c33c1c3296",
+        "type": "function",
+        "z": "6601c4c791e5b30b",
+        "name": "set payload",
+        "func": "msg.payload = [{}, {fields: {pageName: 1}}];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 470,
+        "y": 140,
+        "wires": [
+            [
+                "0cb951a52f82713f"
+            ]
+        ]
+    },
+    {
+        "id": "f78c6d4c8723f289",
+        "type": "debug",
+        "z": "6601c4c791e5b30b",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 810,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "929e3c2b4084838c",
+        "type": "http response",
+        "z": "6601c4c791e5b30b",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 820,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "0cb951a52f82713f",
+        "type": "mongodb4",
+        "z": "6601c4c791e5b30b",
+        "clientNode": "e2bc7ac9aa77279e",
+        "collection": "test",
+        "operation": "find",
+        "output": "toArray",
+        "name": "",
+        "x": 650,
+        "y": 140,
+        "wires": [
+            [
+                "929e3c2b4084838c",
+                "f78c6d4c8723f289"
+            ]
+        ]
+    },
+    {
+        "id": "dab4af10e7aae90c",
+        "type": "debug",
+        "z": "6601c4c791e5b30b",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload[1].pageName",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "b0ec4263ab1d5144",
+        "type": "http request",
+        "z": "6601c4c791e5b30b",
+        "name": "Call get all connected FB page",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://localhost:1880/get-all-connected-fb-page",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 390,
+        "y": 540,
+        "wires": [
+            [
+                "dab4af10e7aae90c"
+            ]
+        ]
+    },
+    {
+        "id": "60ae2fd1aa9ec028",
+        "type": "inject",
+        "z": "6601c4c791e5b30b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 540,
+        "wires": [
+            [
+                "b0ec4263ab1d5144"
+            ]
+        ]
+    },
+    {
+        "id": "444d5bbcc878ce60",
+        "type": "lower-case",
+        "z": "6601c4c791e5b30b",
+        "name": "",
+        "mongodb_collection": "623828766890ea9300b6467d",
+        "x": 150,
+        "y": 680,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "dd9ba3cf8889d37b",
+        "type": "chatbot-facebook-receive",
+        "z": "6601c4c791e5b30b",
+        "bot": "cd894194643eea2a",
+        "botProduction": "cd894194643eea2a",
+        "x": 170,
+        "y": 620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b9b21f652fbfaf68",
+        "type": "chatbot-facebook-receive",
+        "z": "6601c4c791e5b30b",
+        "bot": "cd894194643eea2a",
+        "botProduction": "cd894194643eea2a",
+        "x": 370,
+        "y": 680,
+        "wires": [
+            [
+                "747cee40129a5e77"
+            ]
+        ]
+    },
+    {
+        "id": "8fa57224f5735707",
+        "type": "chatbot-facebook-send",
+        "z": "6601c4c791e5b30b",
+        "bot": "cd894194643eea2a",
+        "botProduction": "cd894194643eea2a",
+        "track": false,
+        "passThrough": false,
+        "errorOutput": false,
+        "outputs": 0,
+        "x": 990,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "747cee40129a5e77",
+        "type": "subflow:0a00a649098e6be0",
+        "z": "6601c4c791e5b30b",
+        "name": "Flow anh Vinh",
+        "x": 660,
+        "y": 640,
+        "wires": [
+            [
+                "8fa57224f5735707"
+            ]
+        ]
+    },
+    {
+        "id": "956dbd80b1dbf5f9",
+        "type": "http in",
+        "z": "6601c4c791e5b30b",
+        "name": "Nhận từ bên CRM",
+        "url": "",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 170,
+        "y": 800,
+        "wires": [
+            [
+                "00c55f418368f677"
+            ]
+        ]
+    },
+    {
+        "id": "00c55f418368f677",
+        "type": "chatbot-message",
+        "z": "6601c4c791e5b30b",
+        "name": "",
+        "message": [
+            {
+                "message": "Chào bạn lại"
+            }
+        ],
+        "language": "none",
+        "x": 390,
+        "y": 860,
+        "wires": [
+            [
+                "bad4641950f4cfc2"
+            ]
+        ]
+    },
+    {
+        "id": "bad4641950f4cfc2",
+        "type": "chatbot-inline-buttons",
+        "z": "6601c4c791e5b30b",
+        "name": "",
+        "buttons": [
+            {
+                "type": "url",
+                "label": "antbuddy",
+                "url": "antbuddy.com",
+                "webViewHeightRatio": "tall",
+                "extensions": false,
+                "answer": "",
+                "alert": false
+            },
+            {
+                "type": "postback",
+                "label": "gọi tổng đài",
+                "value": "/tongdai",
+                "answer": "",
+                "alert": false,
+                "style": ""
+            }
+        ],
+        "message": "",
+        "x": 600,
+        "y": 860,
+        "wires": [
+            [
+                "4cefb568d857451c",
+                "c59dd8c10cf4d1e9"
+            ]
+        ]
+    },
+    {
+        "id": "4cefb568d857451c",
+        "type": "http response",
+        "z": "6601c4c791e5b30b",
+        "name": "Gửi lại bên CRM",
+        "statusCode": "",
+        "headers": {},
+        "x": 810,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "c59dd8c10cf4d1e9",
+        "type": "debug",
+        "z": "6601c4c791e5b30b",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 770,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "ee48b49db9d83404",
+        "type": "inject",
+        "z": "6601c4c791e5b30b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "msg",
+                "v": "Hello",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 940,
+        "wires": [
+            [
+                "00c55f418368f677"
+            ]
+        ]
+    },
+    {
+        "id": "3ba6a018c83dee98",
+        "type": "http in",
+        "z": "6601c4c791e5b30b",
+        "name": "",
+        "url": "/get-connected-fb-page-detail",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 240,
+        "y": 280,
+        "wires": [
+            [
+                "8379e2f659d40206"
+            ]
+        ]
+    },
+    {
+        "id": "0b0cdaf9353e4b94",
+        "type": "debug",
+        "z": "6601c4c791e5b30b",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 810,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "b4b313896cccce1c",
+        "type": "http response",
+        "z": "6601c4c791e5b30b",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 820,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "8379e2f659d40206",
+        "type": "mongodb4",
+        "z": "6601c4c791e5b30b",
+        "clientNode": "e2bc7ac9aa77279e",
+        "collection": "test",
+        "operation": "findOne",
+        "output": "toArray",
+        "name": "",
+        "x": 660,
+        "y": 280,
+        "wires": [
+            [
+                "b4b313896cccce1c",
+                "0b0cdaf9353e4b94"
+            ]
+        ]
+    },
+    {
+        "id": "12debf9e44f8bac0",
+        "type": "chatbot-crm-receive",
+        "z": "6601c4c791e5b30b",
+        "bot": "6f9adb2683cde25d",
+        "botProduction": "",
+        "x": 290,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7ed7753d71e5bac3",
+        "type": "http in",
+        "z": "1a4e6507da790bd3",
+        "name": "",
+        "url": "/connectFB",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 220,
+        "y": 360,
+        "wires": [
+            [
+                "6fe88a054e6e6a55",
+                "aed0fb6d053b359f"
+            ]
+        ]
+    },
+    {
+        "id": "b9bc53bbdcb747ac",
+        "type": "debug",
+        "z": "1a4e6507da790bd3",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 730,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "8072b64e1e404954",
+        "type": "http request",
+        "z": "1a4e6507da790bd3",
+        "name": "",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://localhost:1880/connectFB?query={{{query}}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 530,
+        "y": 80,
+        "wires": [
+            [
+                "b9bc53bbdcb747ac"
+            ]
+        ]
+    },
+    {
+        "id": "c966a22fab11d129",
+        "type": "inject",
+        "z": "1a4e6507da790bd3",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 200,
+        "y": 80,
+        "wires": [
+            [
+                "66831e1a33dda2f2"
+            ]
+        ]
+    },
+    {
+        "id": "179fd2d116891c22",
+        "type": "catch",
+        "z": "1a4e6507da790bd3",
+        "name": "",
+        "scope": null,
+        "uncaught": false,
+        "x": 220,
+        "y": 840,
+        "wires": [
+            [
+                "24a575855046560a",
+                "2b188495750b5350"
+            ]
+        ]
+    },
+    {
+        "id": "24a575855046560a",
+        "type": "debug",
+        "z": "1a4e6507da790bd3",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 450,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "f0376db7a2b9d34b",
+        "type": "inject",
+        "z": "1a4e6507da790bd3",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "0",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 220,
+        "y": 780,
+        "wires": [
+            [
+                "9e24663a28c281fe"
+            ]
+        ]
+    },
+    {
+        "id": "9e24663a28c281fe",
+        "type": "function",
+        "z": "1a4e6507da790bd3",
+        "name": "set payload",
+        "func": "msg.payload = [{name: 'marina', age: 28}];\nmsg.headers = msg.req.headers;\nmsg.params = msg.req.params;\nmsg.query = msg.req.query;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 430,
+        "y": 780,
+        "wires": [
+            [
+                "0005b5455e019765",
+                "9f2e6927550fc338"
+            ]
+        ]
+    },
+    {
+        "id": "0005b5455e019765",
+        "type": "mongodb4",
+        "z": "1a4e6507da790bd3",
+        "clientNode": "e2bc7ac9aa77279e",
+        "collection": "test",
+        "operation": "insertOne",
+        "output": "toArray",
+        "name": "",
+        "x": 600,
+        "y": 780,
+        "wires": [
+            [
+                "0e188b5063d96fa3",
+                "d91585edfe8d3462"
+            ]
+        ]
+    },
+    {
+        "id": "0e188b5063d96fa3",
+        "type": "debug",
+        "z": "1a4e6507da790bd3",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 770,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "7f350f10461f0ef3",
+        "type": "http in",
+        "z": "1a4e6507da790bd3",
+        "name": "",
+        "url": "/connectFBtest",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 260,
+        "y": 700,
+        "wires": [
+            [
+                "9e24663a28c281fe"
+            ]
+        ]
+    },
+    {
+        "id": "d91585edfe8d3462",
+        "type": "http response",
+        "z": "1a4e6507da790bd3",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 780,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "9f2e6927550fc338",
+        "type": "debug",
+        "z": "1a4e6507da790bd3",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 770,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "a64b0a610cbf0d4c",
+        "type": "function",
+        "z": "1a4e6507da790bd3",
+        "name": "set payload",
+        "func": "msg.payload = _.pick(msg.payload, ['org', 'pageAccessToken', 'name', 'channel'])\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 630,
+        "y": 360,
+        "wires": [
+            [
+                "2a1a3961dddf0cfe",
+                "38d676b7c580705b"
+            ]
+        ]
+    },
+    {
+        "id": "2a1a3961dddf0cfe",
+        "type": "debug",
+        "z": "1a4e6507da790bd3",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 970,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "66831e1a33dda2f2",
+        "type": "function",
+        "z": "1a4e6507da790bd3",
+        "name": "set payload",
+        "func": "msg.payload = {\"pageAccessToken\": \"page2\", \"appSecret\": \"veryverysecret\", \"pageName\": \"Page 2 Name\"};\nmsg.headers = {};\nmsg.headers['X-Auth-User'] = 'mike';\nmsg.headers['X-Auth-Key'] = 'fred-key';\nmsg.query = \"querykey\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 80,
+        "wires": [
+            [
+                "8072b64e1e404954"
+            ]
+        ]
+    },
+    {
+        "id": "2b188495750b5350",
+        "type": "http response",
+        "z": "1a4e6507da790bd3",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 430,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "38d676b7c580705b",
+        "type": "mongodb4",
+        "z": "1a4e6507da790bd3",
+        "clientNode": "e2bc7ac9aa77279e",
+        "collection": "test",
+        "operation": "insertOne",
+        "output": "toArray",
+        "name": "",
+        "x": 820,
+        "y": 360,
+        "wires": [
+            [
+                "2a1a3961dddf0cfe"
+            ]
+        ]
+    },
+    {
+        "id": "718690ee6a05bceb",
+        "type": "http request",
+        "z": "1a4e6507da790bd3",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://devchatbot.beeiq.co/api/v1/facebook/pages/is_subcribed?channel={{channel}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 690,
+        "y": 280,
+        "wires": [
+            [
+                "3c73a9f8bb355a21",
+                "6fe88a054e6e6a55"
+            ]
+        ]
+    },
+    {
+        "id": "444554a8f12de08a",
+        "type": "function",
+        "z": "1a4e6507da790bd3",
+        "name": "Đặt access token và channel lấy dữ liệu",
+        "func": "msg.headers = {};\nmsg.headers['x-access-token'] = 'eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJjbGVkcVNPcFJNcWZoTUdLN3FaVlVrOW1ZQ3lUWWtRd0pySVdUT05FZjFFIn0.eyJleHAiOjE2NDg2OTU0MzMsImlhdCI6MTY0ODA5MDYzMywiYXV0aF90aW1lIjoxNjQ4MDkwNjMzLCJqdGkiOiI1YjgxNzY4OC00YmM1LTQ3YTItYThlMi1mZDNjY2RhNDgzZjMiLCJpc3MiOiJodHRwczovL2lkLmFudGJ1ZGR5LmNvbS9hdXRoL3JlYWxtcy9wcm9kdWN0aW9uLmFudGJ1ZGR5LmNvbSIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiIzZDJjMjA3Ny1lOWRmLTQ5ZWEtYTE5NS02ZTE2YmU2YjAzYmUiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJiZWVpcS5jb19uZXciLCJzZXNzaW9uX3N0YXRlIjoiYTM2ZDgwMzEtMWQ3My00OGJiLWE4ZGEtZWVmYTIxODhlMjAxIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwczovL2JlZWlxLmNvIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImRlZmF1bHQtcm9sZXMtcHJvZHVjdGlvbi5hbnRidWRkeS5jb20iLCJ1bWFfYXV0aG9yaXphdGlvbiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoiZW1haWwgcHJvZmlsZSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6ImRldmNoYXRib3QgLiIsIm9yZ2FuaXphdGlvbnMiOlsiL1Byb3Zpc2lvbmluZy9kZXZjaGF0Ym90LmFudGJ1ZGR5LmNvbSBtYXN0ZXJzIiwiL2FudGJ1ZGR5OmRldmNoYXRib3QvbWVtYmVyIiwiL2JlZWlxOmRldmNoYXRib3Qvb3duZXIiLCIvYW50YnVkZHk6ZGV2Y2hhdGJvdC9vd25lciJdLCJtb2JpbGUiOiIwMzUzMDAwNzIxIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiZGV2Y2hhdGJvdCIsImdpdmVuX25hbWUiOiJkZXZjaGF0Ym90IiwiZmFtaWx5X25hbWUiOiIuIiwiZW1haWwiOiJwaGFuaG9hbmduOThAZ21haWwuY29tIn0.JnRH383vjhfmsAAnL6-IhgldbMUPEnuHAw1VkRmYPdquKItG8DFYGBfG85k6Kz_3--UWGzvPc3CJglPrD2JswwfufdIxuk1cOQSsLBXKKWguFPe9n7rRAA6jEnMZf-SunyTRimhGjsfxe59Vm6eNtAU6pz0-F8kVp3tkFFW0rhMEVSsJ9-cYkqRQvvOOW4glvs-0kC8xOlEcb_SdwQC0Di61fQhfCF1qD4hFpUZn2gQ51I5WAVdQ3Ni1dATy2uQ_4I99uaWrhj3-z3i-BPn00z8UJ0BUdfgNwMtO8L-5_yD4eoOGM9dlEfw5uSlyfsDa-1YriJD0NXNMi3McPcZwqA';\nmsg.channel = \"FACEBOOK\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 280,
+        "wires": [
+            [
+                "718690ee6a05bceb"
+            ]
+        ]
+    },
+    {
+        "id": "05fb161fa63e2e3b",
+        "type": "inject",
+        "z": "1a4e6507da790bd3",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 200,
+        "y": 280,
+        "wires": [
+            [
+                "444554a8f12de08a"
+            ]
+        ]
+    },
+    {
+        "id": "3c73a9f8bb355a21",
+        "type": "debug",
+        "z": "1a4e6507da790bd3",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 890,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "18168a0bdd3eeeab",
+        "type": "comment",
+        "z": "1a4e6507da790bd3",
+        "name": "Lấy dữ liệu trang FB đã liên kết",
+        "info": "",
+        "x": 250,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "6fe88a054e6e6a55",
+        "type": "split",
+        "z": "1a4e6507da790bd3",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 430,
+        "y": 360,
+        "wires": [
+            [
+                "a64b0a610cbf0d4c",
+                "2a1a3961dddf0cfe"
+            ]
+        ]
+    },
+    {
+        "id": "aed0fb6d053b359f",
+        "type": "http response",
+        "z": "1a4e6507da790bd3",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 430,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "16e73d3ffd9e67b2",
+        "type": "inject",
+        "z": "1a4e6507da790bd3",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 220,
+        "y": 520,
+        "wires": [
+            [
+                "54e36dd05f832676"
+            ]
+        ]
+    },
+    {
+        "id": "55e33801ca5aef75",
+        "type": "function",
+        "z": "1a4e6507da790bd3",
+        "name": "set payload",
+        "func": "msg.payload = _.omit(msg.payload, ['org', 'pageAccessToken', 'name', 'channel'])\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 630,
+        "y": 520,
+        "wires": [
+            [
+                "8c33b03e647a2934"
+            ]
+        ]
+    },
+    {
+        "id": "54e36dd05f832676",
+        "type": "change",
+        "z": "1a4e6507da790bd3",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"org\":\"622f025ae63f4064b994056f\",\"pageAccessToken\":\"EAAHhrPMxDeQBAD4hUlkEoGOw8W0UqAZCsZBDIZC2OzMQWCq4sMXDFUvBaZA8wvmZAIT1ddv1GVCOcoEJ3XFB4bcoYMuuqttf6bQp6Fs6mIB59LTzvbwDLeb4PnNksyDuksnsQ8dnFJE4F2x2Ttki8Gu7g6VjqtNKC9YmZAnFEJdKb4HhPCSxpq\",\"expiresIn\":1652432321197,\"name\":\"Test botcake\",\"category\":\"Entertainment website\",\"avatarUrl\":\"//graph.facebook.com/104829002137005/picture?redirect=true&access_token=EAAHhrPMxDeQBAD4hUlkEoGOw8W0UqAZCsZBDIZC2OzMQWCq4sMXDFUvBaZA8wvmZAIT1ddv1GVCOcoEJ3XFB4bcoYMuuqttf6bQp6Fs6mIB59LTzvbwDLeb4PnNksyDuksnsQ8dnFJE4F2x2Ttki8Gu7g6VjqtNKC9YmZAnFEJdKb4HhPCSxpq&width=70&height=70\",\"createdBy\":\"622f0259e63f4064b994056e\",\"inTrash\":null,\"contact\":\"622f03c49301df735f00d20a\",\"errMsg\":\"\",\"channel\":\"FACEBOOK\",\"AutoReply\":{\"isEnabled\":false,\"isAllPost\":true,\"textReplyAll\":\"\",\"listPostAutoReply\":[],\"isAllPostMessenger\":true,\"textMessageAll\":\"\",\"listPostAutoMessenger\":[]},\"OmniAssignment\":{\"isEnabled\":true,\"isUserOnline\":true,\"isRoundRobin\":true,\"listUsers\":[],\"rules\":[],\"isChangeAssignContact\":false,\"isAssignRespForSession\":false},\"OmniPermission\":{\"userSupportView\":false,\"userSupportInGroupView\":false,\"userSupportInteract\":false,\"userSupportInGroupInteract\":false},\"admin\":[],\"chatbotIntegrate\":{\"manychat\":{\"active\":false}},\"groups\":[],\"isInSync\":false,\"isSubcribed\":true,\"isSubcribedLeadgen\":false,\"omniSettings\":{},\"rating\":false,\"textThanksRating\":\"\",\"userSuport\":[],\"verify\":false,\"id\":\"104829002137005\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 400,
+        "y": 520,
+        "wires": [
+            [
+                "55e33801ca5aef75"
+            ]
+        ]
+    },
+    {
+        "id": "8c33b03e647a2934",
+        "type": "debug",
+        "z": "1a4e6507da790bd3",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 830,
+        "y": 520,
         "wires": []
     }
 ]
