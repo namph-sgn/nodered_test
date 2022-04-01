@@ -25,7 +25,7 @@
     {
         "id": "6601c4c791e5b30b",
         "type": "tab",
-        "label": "Mongodb API",
+        "label": "Core API chatbot",
         "disabled": false,
         "info": "",
         "env": []
@@ -33,7 +33,7 @@
     {
         "id": "1a4e6507da790bd3",
         "type": "tab",
-        "label": "Flow 1",
+        "label": "Test FB API",
         "disabled": false,
         "info": "",
         "env": []
@@ -65,8 +65,8 @@
         ],
         "out": [
             {
-                "x": 1020,
-                "y": 140,
+                "x": 1200,
+                "y": 280,
                 "wires": [
                     {
                         "id": "337b6ad23ef66a79",
@@ -79,6 +79,14 @@
                     {
                         "id": "9b3188ddae703d79",
                         "port": 0
+                    },
+                    {
+                        "id": "924b77fb25567606",
+                        "port": 0
+                    },
+                    {
+                        "id": "b07d9e2882559c70",
+                        "port": 0
                     }
                 ]
             }
@@ -86,17 +94,6 @@
         "env": [],
         "meta": {},
         "color": "#DDAA99"
-    },
-    {
-        "id": "cd894194643eea2a",
-        "type": "chatbot-facebook-node",
-        "botname": "Testbot_dev",
-        "usernames": "Hello",
-        "store": "",
-        "log": "",
-        "debug": false,
-        "multiWebHook": true,
-        "profileFields": "first_name,last_name"
     },
     {
         "id": "dd0b7f14421d961d",
@@ -154,6 +151,17 @@
         "debug": false
     },
     {
+        "id": "8dad268fa22b51f1",
+        "type": "chatbot-facebook-node",
+        "botname": "Test RASA",
+        "usernames": "",
+        "store": "",
+        "log": "",
+        "debug": false,
+        "multiWebHook": false,
+        "profileFields": "first_name,last_name"
+    },
+    {
         "id": "22626154f2f68eda",
         "type": "chatbot-rules",
         "z": "0a00a649098e6be0",
@@ -176,26 +184,7 @@
                 "84fc25901920177e"
             ],
             [
-                "de0be100339a5997"
-            ]
-        ]
-    },
-    {
-        "id": "de0be100339a5997",
-        "type": "chatbot-message",
-        "z": "0a00a649098e6be0",
-        "name": "",
-        "message": [
-            {
-                "message": "Gọi điện cho người bán: 9999999"
-            }
-        ],
-        "language": "none",
-        "x": 190,
-        "y": 240,
-        "wires": [
-            [
-                "3f6961929590b337"
+                "77bc3b3afc74598b"
             ]
         ]
     },
@@ -237,8 +226,8 @@
         "id": "821eee9cbf7bec50",
         "type": "chatbot-facebook-send",
         "z": "0a00a649098e6be0",
-        "bot": "cd894194643eea2a",
-        "botProduction": "",
+        "bot": "8dad268fa22b51f1",
+        "botProduction": "8dad268fa22b51f1",
         "track": true,
         "passThrough": false,
         "errorOutput": false,
@@ -340,15 +329,108 @@
         "id": "3f6961929590b337",
         "type": "chatbot-facebook-send",
         "z": "0a00a649098e6be0",
-        "bot": "cd894194643eea2a",
-        "botProduction": "",
-        "track": false,
+        "bot": "8dad268fa22b51f1",
+        "botProduction": "8dad268fa22b51f1",
+        "track": true,
         "passThrough": false,
         "errorOutput": false,
-        "outputs": 0,
-        "x": 370,
-        "y": 240,
-        "wires": []
+        "outputs": 1,
+        "x": 590,
+        "y": 400,
+        "wires": [
+            [
+                "6580d1615d467e6a"
+            ]
+        ]
+    },
+    {
+        "id": "77bc3b3afc74598b",
+        "type": "chatbot-quick-replies",
+        "z": "0a00a649098e6be0",
+        "name": "",
+        "message": "Bạn muốn gọi đến chăm sóc khách hàng với yêu cầu gì?",
+        "buttons": [
+            {
+                "type": "quick-reply",
+                "label": "Chào hỏi",
+                "value": "/chaohoi",
+                "url": ""
+            },
+            {
+                "type": "quick-reply",
+                "label": "Đăng ký dịch vụ",
+                "value": "/dangky",
+                "url": ""
+            }
+        ],
+        "x": 340,
+        "y": 400,
+        "wires": [
+            [
+                "3f6961929590b337"
+            ]
+        ]
+    },
+    {
+        "id": "924b77fb25567606",
+        "type": "chatbot-message",
+        "z": "0a00a649098e6be0",
+        "name": "",
+        "message": [
+            {
+                "message": "CRM chào hỏi lại bạn"
+            }
+        ],
+        "language": "none",
+        "x": 930,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b07d9e2882559c70",
+        "type": "chatbot-message",
+        "z": "0a00a649098e6be0",
+        "name": "",
+        "message": [
+            {
+                "message": "Bạn đã đăng ký nhận tin từ CRM"
+            }
+        ],
+        "language": "none",
+        "x": 930,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6580d1615d467e6a",
+        "type": "chatbot-rules",
+        "z": "0a00a649098e6be0",
+        "name": "",
+        "rules": [
+            {
+                "type": "command",
+                "command": "/chaohoi"
+            },
+            {
+                "type": "command",
+                "command": "/dangky"
+            }
+        ],
+        "outputs": 2,
+        "x": 770,
+        "y": 400,
+        "wires": [
+            [
+                "924b77fb25567606"
+            ],
+            [
+                "b07d9e2882559c70"
+            ]
+        ]
     },
     {
         "id": "b2d18992018c5b63",
@@ -373,8 +455,8 @@
         "id": "1cafcec2c10ceb77",
         "type": "chatbot-facebook-receive",
         "z": "c9cf0916beea2b06",
-        "bot": "cd894194643eea2a",
-        "botProduction": "cd894194643eea2a",
+        "bot": "",
+        "botProduction": "",
         "x": 170,
         "y": 480,
         "wires": [
@@ -387,8 +469,8 @@
         "id": "5ce8cd71cb3aacbd",
         "type": "chatbot-facebook-send",
         "z": "c9cf0916beea2b06",
-        "bot": "cd894194643eea2a",
-        "botProduction": "cd894194643eea2a",
+        "bot": "",
+        "botProduction": "",
         "track": false,
         "passThrough": false,
         "errorOutput": false,
@@ -733,8 +815,8 @@
         "id": "abbb25647f80dc2a",
         "type": "chatbot-facebook-receive",
         "z": "c9cf0916beea2b06",
-        "bot": "cd894194643eea2a",
-        "botProduction": "cd894194643eea2a",
+        "bot": "",
+        "botProduction": "",
         "x": 170,
         "y": 780,
         "wires": [
@@ -747,8 +829,8 @@
         "id": "ab2a02c24da5393d",
         "type": "chatbot-facebook-send",
         "z": "c9cf0916beea2b06",
-        "bot": "cd894194643eea2a",
-        "botProduction": "cd894194643eea2a",
+        "bot": "",
+        "botProduction": "",
         "track": false,
         "passThrough": false,
         "errorOutput": false,
@@ -1227,8 +1309,8 @@
         "id": "781ec06407dc1640",
         "type": "chatbot-facebook-send",
         "z": "25e44718.693758",
-        "bot": "cd894194643eea2a",
-        "botProduction": "cd894194643eea2a",
+        "bot": "",
+        "botProduction": "",
         "track": false,
         "passThrough": true,
         "errorOutput": false,
@@ -1689,8 +1771,8 @@
         "id": "e570d684e303cd01",
         "type": "chatbot-facebook-receive",
         "z": "25e44718.693758",
-        "bot": "cd894194643eea2a",
-        "botProduction": "cd894194643eea2a",
+        "bot": "",
+        "botProduction": "",
         "x": 330,
         "y": 720,
         "wires": [
@@ -2209,7 +2291,7 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 230,
-        "y": 140,
+        "y": 120,
         "wires": [
             [
                 "c92ed5c33c1c3296"
@@ -2228,7 +2310,7 @@
         "finalize": "",
         "libs": [],
         "x": 470,
-        "y": 140,
+        "y": 120,
         "wires": [
             [
                 "0cb951a52f82713f"
@@ -2243,7 +2325,7 @@
         "statusCode": "200",
         "headers": {},
         "x": 820,
-        "y": 140,
+        "y": 120,
         "wires": []
     },
     {
@@ -2256,7 +2338,7 @@
         "output": "toArray",
         "name": "",
         "x": 650,
-        "y": 140,
+        "y": 120,
         "wires": [
             [
                 "929e3c2b4084838c"
@@ -2277,7 +2359,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 740,
-        "y": 540,
+        "y": 880,
         "wires": []
     },
     {
@@ -2295,7 +2377,7 @@
         "authType": "",
         "senderr": false,
         "x": 390,
-        "y": 540,
+        "y": 880,
         "wires": [
             [
                 "dab4af10e7aae90c"
@@ -2324,51 +2406,10 @@
         "payload": "",
         "payloadType": "date",
         "x": 160,
-        "y": 540,
+        "y": 880,
         "wires": [
             [
                 "b0ec4263ab1d5144"
-            ]
-        ]
-    },
-    {
-        "id": "b9b21f652fbfaf68",
-        "type": "chatbot-facebook-receive",
-        "z": "6601c4c791e5b30b",
-        "bot": "cd894194643eea2a",
-        "botProduction": "cd894194643eea2a",
-        "x": 370,
-        "y": 680,
-        "wires": [
-            [
-                "747cee40129a5e77"
-            ]
-        ]
-    },
-    {
-        "id": "8fa57224f5735707",
-        "type": "chatbot-facebook-send",
-        "z": "6601c4c791e5b30b",
-        "bot": "cd894194643eea2a",
-        "botProduction": "cd894194643eea2a",
-        "track": false,
-        "passThrough": false,
-        "errorOutput": false,
-        "outputs": 0,
-        "x": 990,
-        "y": 640,
-        "wires": []
-    },
-    {
-        "id": "747cee40129a5e77",
-        "type": "subflow:0a00a649098e6be0",
-        "z": "6601c4c791e5b30b",
-        "name": "Flow anh Vinh",
-        "x": 660,
-        "y": 640,
-        "wires": [
-            [
-                "8fa57224f5735707"
             ]
         ]
     },
@@ -2382,7 +2423,7 @@
         "upload": false,
         "swaggerDoc": "",
         "x": 240,
-        "y": 280,
+        "y": 260,
         "wires": [
             [
                 "1164d3698f906ca2"
@@ -2397,7 +2438,7 @@
         "statusCode": "200",
         "headers": {},
         "x": 960,
-        "y": 280,
+        "y": 260,
         "wires": []
     },
     {
@@ -2410,7 +2451,7 @@
         "output": "toArray",
         "name": "",
         "x": 780,
-        "y": 280,
+        "y": 260,
         "wires": [
             [
                 "b4b313896cccce1c"
@@ -2429,7 +2470,7 @@
         "finalize": "",
         "libs": [],
         "x": 550,
-        "y": 280,
+        "y": 260,
         "wires": [
             [
                 "8379e2f659d40206"
@@ -2444,7 +2485,7 @@
         "scope": null,
         "uncaught": false,
         "x": 140,
-        "y": 800,
+        "y": 1200,
         "wires": [
             [
                 "e42153d8f9465425",
@@ -2466,7 +2507,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 270,
-        "y": 860,
+        "y": 1260,
         "wires": []
     },
     {
@@ -2477,7 +2518,7 @@
         "statusCode": "",
         "headers": {},
         "x": 290,
-        "y": 760,
+        "y": 1160,
         "wires": []
     },
     {
@@ -2502,7 +2543,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 180,
-        "y": 420,
+        "y": 320,
         "wires": [
             [
                 "1164d3698f906ca2"
@@ -2510,21 +2551,362 @@
         ]
     },
     {
-        "id": "7ed7753d71e5bac3",
+        "id": "651822d99b01b690",
         "type": "http in",
-        "z": "1a4e6507da790bd3",
+        "z": "6601c4c791e5b30b",
         "name": "",
         "url": "/connectFB",
         "method": "post",
         "upload": false,
         "swaggerDoc": "",
-        "x": 220,
-        "y": 360,
+        "x": 200,
+        "y": 540,
         "wires": [
             [
-                "995b58d7630b70f0"
+                "9a5de1b14e9db571"
             ]
         ]
+    },
+    {
+        "id": "1919ef577db46e0c",
+        "type": "debug",
+        "z": "6601c4c791e5b30b",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 950,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "37527ebf10e03c96",
+        "type": "mongodb4",
+        "z": "6601c4c791e5b30b",
+        "clientNode": "e2bc7ac9aa77279e",
+        "collection": "test",
+        "operation": "insertOne",
+        "output": "toArray",
+        "name": "",
+        "x": 800,
+        "y": 540,
+        "wires": [
+            [
+                "1919ef577db46e0c",
+                "b3d09d0243d489b0"
+            ]
+        ]
+    },
+    {
+        "id": "8d1cf18061779501",
+        "type": "http request",
+        "z": "6601c4c791e5b30b",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://devchatbot.beeiq.co/api/v1/facebook/pages/is_subcribed?channel={{channel}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 670,
+        "y": 460,
+        "wires": [
+            [
+                "f1d8701cec52858a"
+            ]
+        ]
+    },
+    {
+        "id": "7f16d716759a94a5",
+        "type": "function",
+        "z": "6601c4c791e5b30b",
+        "name": "Đặt access token và channel lấy dữ liệu",
+        "func": "msg.headers = {};\nmsg.headers['x-access-token'] = 'eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJjbGVkcVNPcFJNcWZoTUdLN3FaVlVrOW1ZQ3lUWWtRd0pySVdUT05FZjFFIn0.eyJleHAiOjE2NDg2OTU0MzMsImlhdCI6MTY0ODA5MDYzMywiYXV0aF90aW1lIjoxNjQ4MDkwNjMzLCJqdGkiOiI1YjgxNzY4OC00YmM1LTQ3YTItYThlMi1mZDNjY2RhNDgzZjMiLCJpc3MiOiJodHRwczovL2lkLmFudGJ1ZGR5LmNvbS9hdXRoL3JlYWxtcy9wcm9kdWN0aW9uLmFudGJ1ZGR5LmNvbSIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiIzZDJjMjA3Ny1lOWRmLTQ5ZWEtYTE5NS02ZTE2YmU2YjAzYmUiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJiZWVpcS5jb19uZXciLCJzZXNzaW9uX3N0YXRlIjoiYTM2ZDgwMzEtMWQ3My00OGJiLWE4ZGEtZWVmYTIxODhlMjAxIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwczovL2JlZWlxLmNvIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImRlZmF1bHQtcm9sZXMtcHJvZHVjdGlvbi5hbnRidWRkeS5jb20iLCJ1bWFfYXV0aG9yaXphdGlvbiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoiZW1haWwgcHJvZmlsZSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6ImRldmNoYXRib3QgLiIsIm9yZ2FuaXphdGlvbnMiOlsiL1Byb3Zpc2lvbmluZy9kZXZjaGF0Ym90LmFudGJ1ZGR5LmNvbSBtYXN0ZXJzIiwiL2FudGJ1ZGR5OmRldmNoYXRib3QvbWVtYmVyIiwiL2JlZWlxOmRldmNoYXRib3Qvb3duZXIiLCIvYW50YnVkZHk6ZGV2Y2hhdGJvdC9vd25lciJdLCJtb2JpbGUiOiIwMzUzMDAwNzIxIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiZGV2Y2hhdGJvdCIsImdpdmVuX25hbWUiOiJkZXZjaGF0Ym90IiwiZmFtaWx5X25hbWUiOiIuIiwiZW1haWwiOiJwaGFuaG9hbmduOThAZ21haWwuY29tIn0.JnRH383vjhfmsAAnL6-IhgldbMUPEnuHAw1VkRmYPdquKItG8DFYGBfG85k6Kz_3--UWGzvPc3CJglPrD2JswwfufdIxuk1cOQSsLBXKKWguFPe9n7rRAA6jEnMZf-SunyTRimhGjsfxe59Vm6eNtAU6pz0-F8kVp3tkFFW0rhMEVSsJ9-cYkqRQvvOOW4glvs-0kC8xOlEcb_SdwQC0Di61fQhfCF1qD4hFpUZn2gQ51I5WAVdQ3Ni1dATy2uQ_4I99uaWrhj3-z3i-BPn00z8UJ0BUdfgNwMtO8L-5_yD4eoOGM9dlEfw5uSlyfsDa-1YriJD0NXNMi3McPcZwqA';\nmsg.channel = \"FACEBOOK\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 460,
+        "wires": [
+            [
+                "8d1cf18061779501"
+            ]
+        ]
+    },
+    {
+        "id": "9b3d10d5bd6c5f02",
+        "type": "inject",
+        "z": "6601c4c791e5b30b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 460,
+        "wires": [
+            [
+                "7f16d716759a94a5"
+            ]
+        ]
+    },
+    {
+        "id": "69c7586f84c6fdb4",
+        "type": "comment",
+        "z": "6601c4c791e5b30b",
+        "name": "API để CRM liên kết FB với chatbot",
+        "info": "",
+        "x": 240,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "f1d8701cec52858a",
+        "type": "split",
+        "z": "6601c4c791e5b30b",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 850,
+        "y": 460,
+        "wires": [
+            [
+                "9a5de1b14e9db571"
+            ]
+        ]
+    },
+    {
+        "id": "b3d09d0243d489b0",
+        "type": "http response",
+        "z": "6601c4c791e5b30b",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 990,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "a3d7825dba92ab75",
+        "type": "debug",
+        "z": "6601c4c791e5b30b",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 810,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "9a5de1b14e9db571",
+        "type": "function",
+        "z": "6601c4c791e5b30b",
+        "name": "set payload",
+        "func": "var _ = global.get('lodash')\n\nmsg.payload = [_.pick(msg.payload, ['org', 'pageAccessToken', 'name', 'channel'])]\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 530,
+        "y": 540,
+        "wires": [
+            [
+                "37527ebf10e03c96",
+                "a3d7825dba92ab75"
+            ]
+        ]
+    },
+    {
+        "id": "fb04b10b72d8089e",
+        "type": "comment",
+        "z": "6601c4c791e5b30b",
+        "name": "Lấy dữ liệu chi tiết về trang FB đã liên kết trong DB",
+        "info": "",
+        "x": 290,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "eb0082c69b6feef5",
+        "type": "comment",
+        "z": "6601c4c791e5b30b",
+        "name": "Lấy tất cả trang FB đã liên kết",
+        "info": "",
+        "x": 220,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "20efd69937434384",
+        "type": "comment",
+        "z": "6601c4c791e5b30b",
+        "name": "API test",
+        "info": "",
+        "x": 130,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "5aa87db5a9649eb1",
+        "type": "inject",
+        "z": "6601c4c791e5b30b",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "0",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 1080,
+        "wires": [
+            [
+                "510525909d78d30d"
+            ]
+        ]
+    },
+    {
+        "id": "510525909d78d30d",
+        "type": "function",
+        "z": "6601c4c791e5b30b",
+        "name": "set payload",
+        "func": "msg.payload = [{name: 'marina', age: 28}];\nmsg.headers = msg.req.headers;\nmsg.params = msg.req.params;\nmsg.query = msg.req.query;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 1080,
+        "wires": [
+            [
+                "e1228ba9c5f1fd75",
+                "6fb181f802dd3709"
+            ]
+        ]
+    },
+    {
+        "id": "e1228ba9c5f1fd75",
+        "type": "mongodb4",
+        "z": "6601c4c791e5b30b",
+        "clientNode": "e2bc7ac9aa77279e",
+        "collection": "test",
+        "operation": "insertOne",
+        "output": "toArray",
+        "name": "",
+        "x": 520,
+        "y": 1080,
+        "wires": [
+            [
+                "63e952130353acc9",
+                "e9e0e69b7b920b22"
+            ]
+        ]
+    },
+    {
+        "id": "63e952130353acc9",
+        "type": "debug",
+        "z": "6601c4c791e5b30b",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 690,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "ee2a7599c8b8575a",
+        "type": "http in",
+        "z": "6601c4c791e5b30b",
+        "name": "",
+        "url": "/connectFBtest",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 180,
+        "y": 1000,
+        "wires": [
+            [
+                "510525909d78d30d"
+            ]
+        ]
+    },
+    {
+        "id": "e9e0e69b7b920b22",
+        "type": "http response",
+        "z": "6601c4c791e5b30b",
+        "name": "",
+        "statusCode": "200",
+        "headers": {},
+        "x": 700,
+        "y": 1080,
+        "wires": []
+    },
+    {
+        "id": "6fb181f802dd3709",
+        "type": "debug",
+        "z": "6601c4c791e5b30b",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 690,
+        "y": 940,
+        "wires": []
     },
     {
         "id": "b9bc53bbdcb747ac",
@@ -2616,7 +2998,7 @@
         ],
         "uncaught": false,
         "x": 180,
-        "y": 760,
+        "y": 1160,
         "wires": [
             [
                 "24a575855046560a",
@@ -2638,153 +3020,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 410,
-        "y": 760,
-        "wires": []
-    },
-    {
-        "id": "f0376db7a2b9d34b",
-        "type": "inject",
-        "z": "1a4e6507da790bd3",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": "0",
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 180,
-        "y": 660,
-        "wires": [
-            [
-                "9e24663a28c281fe"
-            ]
-        ]
-    },
-    {
-        "id": "9e24663a28c281fe",
-        "type": "function",
-        "z": "1a4e6507da790bd3",
-        "name": "set payload",
-        "func": "msg.payload = [{name: 'marina', age: 28}];\nmsg.headers = msg.req.headers;\nmsg.params = msg.req.params;\nmsg.query = msg.req.query;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 390,
-        "y": 660,
-        "wires": [
-            [
-                "0005b5455e019765",
-                "9f2e6927550fc338"
-            ]
-        ]
-    },
-    {
-        "id": "0005b5455e019765",
-        "type": "mongodb4",
-        "z": "1a4e6507da790bd3",
-        "clientNode": "e2bc7ac9aa77279e",
-        "collection": "test",
-        "operation": "insertOne",
-        "output": "toArray",
-        "name": "",
-        "x": 560,
-        "y": 660,
-        "wires": [
-            [
-                "0e188b5063d96fa3",
-                "d91585edfe8d3462"
-            ]
-        ]
-    },
-    {
-        "id": "0e188b5063d96fa3",
-        "type": "debug",
-        "z": "1a4e6507da790bd3",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 730,
-        "y": 580,
-        "wires": []
-    },
-    {
-        "id": "7f350f10461f0ef3",
-        "type": "http in",
-        "z": "1a4e6507da790bd3",
-        "name": "",
-        "url": "/connectFBtest",
-        "method": "post",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 220,
-        "y": 580,
-        "wires": [
-            [
-                "9e24663a28c281fe"
-            ]
-        ]
-    },
-    {
-        "id": "d91585edfe8d3462",
-        "type": "http response",
-        "z": "1a4e6507da790bd3",
-        "name": "",
-        "statusCode": "200",
-        "headers": {},
-        "x": 740,
-        "y": 660,
-        "wires": []
-    },
-    {
-        "id": "9f2e6927550fc338",
-        "type": "debug",
-        "z": "1a4e6507da790bd3",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 730,
-        "y": 520,
-        "wires": []
-    },
-    {
-        "id": "2a1a3961dddf0cfe",
-        "type": "debug",
-        "z": "1a4e6507da790bd3",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "true",
-        "targetType": "full",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 970,
-        "y": 420,
+        "y": 1160,
         "wires": []
     },
     {
@@ -2814,70 +3050,83 @@
         "statusCode": "",
         "headers": {},
         "x": 390,
-        "y": 820,
+        "y": 1220,
         "wires": []
     },
     {
-        "id": "38d676b7c580705b",
-        "type": "mongodb4",
+        "id": "ae9a130b8cffbc42",
+        "type": "chatbot-facebook-receive",
         "z": "1a4e6507da790bd3",
-        "clientNode": "e2bc7ac9aa77279e",
-        "collection": "test",
-        "operation": "insertOne",
-        "output": "toArray",
-        "name": "",
-        "x": 820,
-        "y": 360,
+        "bot": "8dad268fa22b51f1",
+        "botProduction": "8dad268fa22b51f1",
+        "x": 210,
+        "y": 200,
         "wires": [
             [
-                "2a1a3961dddf0cfe",
-                "aed0fb6d053b359f"
+                "8a979cbe385c8b1e"
             ]
         ]
     },
     {
-        "id": "718690ee6a05bceb",
-        "type": "http request",
+        "id": "52b6c27cae26ad44",
+        "type": "chatbot-facebook-send",
         "z": "1a4e6507da790bd3",
-        "name": "",
-        "method": "GET",
-        "ret": "obj",
-        "paytoqs": "ignore",
-        "url": "https://devchatbot.beeiq.co/api/v1/facebook/pages/is_subcribed?channel={{channel}}",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "authType": "",
-        "senderr": false,
-        "x": 690,
-        "y": 280,
-        "wires": [
-            [
-                "6fe88a054e6e6a55"
-            ]
-        ]
-    },
-    {
-        "id": "444554a8f12de08a",
-        "type": "function",
-        "z": "1a4e6507da790bd3",
-        "name": "Đặt access token và channel lấy dữ liệu",
-        "func": "msg.headers = {};\nmsg.headers['x-access-token'] = 'eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJjbGVkcVNPcFJNcWZoTUdLN3FaVlVrOW1ZQ3lUWWtRd0pySVdUT05FZjFFIn0.eyJleHAiOjE2NDg2OTU0MzMsImlhdCI6MTY0ODA5MDYzMywiYXV0aF90aW1lIjoxNjQ4MDkwNjMzLCJqdGkiOiI1YjgxNzY4OC00YmM1LTQ3YTItYThlMi1mZDNjY2RhNDgzZjMiLCJpc3MiOiJodHRwczovL2lkLmFudGJ1ZGR5LmNvbS9hdXRoL3JlYWxtcy9wcm9kdWN0aW9uLmFudGJ1ZGR5LmNvbSIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiIzZDJjMjA3Ny1lOWRmLTQ5ZWEtYTE5NS02ZTE2YmU2YjAzYmUiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJiZWVpcS5jb19uZXciLCJzZXNzaW9uX3N0YXRlIjoiYTM2ZDgwMzEtMWQ3My00OGJiLWE4ZGEtZWVmYTIxODhlMjAxIiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwczovL2JlZWlxLmNvIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJvZmZsaW5lX2FjY2VzcyIsImRlZmF1bHQtcm9sZXMtcHJvZHVjdGlvbi5hbnRidWRkeS5jb20iLCJ1bWFfYXV0aG9yaXphdGlvbiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoiZW1haWwgcHJvZmlsZSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6ImRldmNoYXRib3QgLiIsIm9yZ2FuaXphdGlvbnMiOlsiL1Byb3Zpc2lvbmluZy9kZXZjaGF0Ym90LmFudGJ1ZGR5LmNvbSBtYXN0ZXJzIiwiL2FudGJ1ZGR5OmRldmNoYXRib3QvbWVtYmVyIiwiL2JlZWlxOmRldmNoYXRib3Qvb3duZXIiLCIvYW50YnVkZHk6ZGV2Y2hhdGJvdC9vd25lciJdLCJtb2JpbGUiOiIwMzUzMDAwNzIxIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiZGV2Y2hhdGJvdCIsImdpdmVuX25hbWUiOiJkZXZjaGF0Ym90IiwiZmFtaWx5X25hbWUiOiIuIiwiZW1haWwiOiJwaGFuaG9hbmduOThAZ21haWwuY29tIn0.JnRH383vjhfmsAAnL6-IhgldbMUPEnuHAw1VkRmYPdquKItG8DFYGBfG85k6Kz_3--UWGzvPc3CJglPrD2JswwfufdIxuk1cOQSsLBXKKWguFPe9n7rRAA6jEnMZf-SunyTRimhGjsfxe59Vm6eNtAU6pz0-F8kVp3tkFFW0rhMEVSsJ9-cYkqRQvvOOW4glvs-0kC8xOlEcb_SdwQC0Di61fQhfCF1qD4hFpUZn2gQ51I5WAVdQ3Ni1dATy2uQ_4I99uaWrhj3-z3i-BPn00z8UJ0BUdfgNwMtO8L-5_yD4eoOGM9dlEfw5uSlyfsDa-1YriJD0NXNMi3McPcZwqA';\nmsg.channel = \"FACEBOOK\"\nreturn msg;",
+        "bot": "8dad268fa22b51f1",
+        "botProduction": "8dad268fa22b51f1",
+        "track": false,
+        "passThrough": true,
+        "errorOutput": false,
         "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 440,
-        "y": 280,
+        "x": 690,
+        "y": 200,
         "wires": [
             [
-                "718690ee6a05bceb"
+                "d6de4184debaaf0a"
             ]
         ]
     },
     {
-        "id": "05fb161fa63e2e3b",
+        "id": "8a979cbe385c8b1e",
+        "type": "subflow:0a00a649098e6be0",
+        "z": "1a4e6507da790bd3",
+        "name": "Flow anh Vinh",
+        "x": 460,
+        "y": 200,
+        "wires": [
+            [
+                "52b6c27cae26ad44"
+            ]
+        ]
+    },
+    {
+        "id": "e0d4ecb0a64b741a",
+        "type": "comment",
+        "z": "1a4e6507da790bd3",
+        "name": "Chỉnh mainmenu trên FB",
+        "info": "",
+        "x": 230,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "cea7ed6e89c75d31",
+        "type": "http in",
+        "z": "1a4e6507da790bd3",
+        "name": "",
+        "url": "/changeFBMainmenu",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 240,
+        "y": 320,
+        "wires": [
+            [
+                "6fd315f9bcf32801"
+            ]
+        ]
+    },
+    {
+        "id": "8dcac2ee65aef454",
         "type": "inject",
         "z": "1a4e6507da790bd3",
         "name": "",
@@ -2893,60 +3142,69 @@
         "repeat": "",
         "crontab": "",
         "once": false,
-        "onceDelay": "",
+        "onceDelay": 0.1,
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 200,
-        "y": 280,
+        "x": 180,
+        "y": 380,
         "wires": [
             [
-                "444554a8f12de08a"
+                "6fd315f9bcf32801"
             ]
         ]
     },
     {
-        "id": "18168a0bdd3eeeab",
-        "type": "comment",
-        "z": "1a4e6507da790bd3",
-        "name": "Lấy dữ liệu trang FB đã liên kết",
-        "info": "",
-        "x": 250,
-        "y": 220,
-        "wires": []
-    },
-    {
-        "id": "6fe88a054e6e6a55",
-        "type": "split",
+        "id": "2c4c973f751ca939",
+        "type": "http request",
         "z": "1a4e6507da790bd3",
         "name": "",
-        "splt": "\\n",
-        "spltType": "str",
-        "arraySplt": 1,
-        "arraySpltType": "len",
-        "stream": false,
-        "addname": "",
-        "x": 870,
-        "y": 280,
-        "wires": [
-            [
-                "995b58d7630b70f0"
-            ]
-        ]
-    },
-    {
-        "id": "aed0fb6d053b359f",
-        "type": "http response",
-        "z": "1a4e6507da790bd3",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 1010,
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://graph.facebook.com/v13.0/me/messenger_profile?access_token=EAAHe6qOa2KIBAFEkcLur53vhYTPmhaiLpChZBUNUiDQU6UCE7tInfsNuUGLDvML8Wol4qF6oXS0ru539YhR94NhJrYPfLIWCy1JYqefD2G0AQ9ZAOYt0VOYpguwYI9K1i9dxhqFHa44VkvmB50ISsNqQE54wUZCM5sA32qgkNkafX1nsZCPe",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 750,
         "y": 360,
-        "wires": []
+        "wires": [
+            [
+                "101b7d8aeeb252de"
+            ]
+        ]
     },
     {
-        "id": "8c33b03e647a2934",
+        "id": "6fd315f9bcf32801",
+        "type": "change",
+        "z": "1a4e6507da790bd3",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"persistent_menu\":[{\"locale\":\"default\",\"composer_input_disabled\":false,\"call_to_actions\":[{\"type\":\"postback\",\"title\":\"Bạn muốn mua gì?\",\"payload\":\"/muahang\"},{\"type\":\"postback\",\"title\":\"Gọi điện cho người bán\",\"payload\":\"/goidien\"}]}]}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 500,
+        "y": 360,
+        "wires": [
+            [
+                "2c4c973f751ca939"
+            ]
+        ]
+    },
+    {
+        "id": "101b7d8aeeb252de",
         "type": "debug",
         "z": "1a4e6507da790bd3",
         "name": "",
@@ -2958,29 +3216,26 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 830,
-        "y": 480,
+        "x": 950,
+        "y": 360,
         "wires": []
     },
     {
-        "id": "995b58d7630b70f0",
-        "type": "function",
+        "id": "d6de4184debaaf0a",
+        "type": "debug",
         "z": "1a4e6507da790bd3",
-        "name": "set payload",
-        "func": "var _ = global.get('lodash')\n\nmsg.payload = [_.pick(msg.payload, ['org', 'pageAccessToken', 'name', 'channel'])]\n\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 550,
-        "y": 360,
-        "wires": [
-            [
-                "38d676b7c580705b",
-                "8c33b03e647a2934"
-            ]
-        ]
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 890,
+        "y": 200,
+        "wires": []
     },
     {
         "id": "ed5da1f62e5a2ae0",
@@ -3072,7 +3327,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 140,
-        "y": 260,
+        "y": 400,
         "wires": [
             [
                 "3b6955ba357f0885"
@@ -3094,7 +3349,7 @@
         "authType": "",
         "senderr": false,
         "x": 590,
-        "y": 260,
+        "y": 400,
         "wires": [
             [
                 "9314d3a8b9a7cb0c"
@@ -3115,7 +3370,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 890,
-        "y": 260,
+        "y": 400,
         "wires": []
     },
     {
@@ -3145,7 +3400,7 @@
         "to": "",
         "reg": false,
         "x": 320,
-        "y": 260,
+        "y": 400,
         "wires": [
             [
                 "cbc273a2c855552a"
@@ -3162,7 +3417,8 @@
         "y": 80,
         "wires": [
             [
-                "099b019913102198"
+                "099b019913102198",
+                "17ebab08b1cfc1b6"
             ]
         ]
     },
@@ -3176,7 +3432,7 @@
         "passThrough": true,
         "errorOutput": false,
         "outputs": 1,
-        "x": 650,
+        "x": 910,
         "y": 80,
         "wires": [
             [
@@ -3284,8 +3540,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 350,
-        "y": 140,
+        "x": 1070,
+        "y": 80,
         "wires": []
     },
     {
@@ -3297,7 +3553,7 @@
         "method": "post",
         "upload": false,
         "swaggerDoc": "",
-        "x": 150,
+        "x": 110,
         "y": 540,
         "wires": [
             [
@@ -3310,11 +3566,11 @@
         "id": "37f7d263aea4aa61",
         "type": "chatbot-extend",
         "z": "2b38a8460eabdbe4",
-        "codeJs": "node.chat.onChatId(msg => {\n  return msg.req.headers !== null ? msg.req.headers.from : 123465978;\n});\nnode.chat.onMessageId(msg => {\n  return msg._msgid != null ? msg._msgid : null;     \n});\nnode.chat.in(message => {\n  return new Promise((resolve, reject) => {\n    // email node put the content on the .payload, perhaps additional check if the .payload is a string\n    if (message.originalMessage.payload !== null) {\n      message.payload.type = 'message';  \n      message.payload.content = message.originalMessage.payload;\n    }\n    resolve(message);\n  });\n});\nnode.chat.out('message', message => {\n    var chat = message.chat();\n  return new Promise((resolve, reject) => {\n     message.payload = message.payload;\n     message.to = chat.get('chatId');\n     node.warn(\"typed message out\");\n     node.warn(message);\n     resolve(message);\n  });    \n});\n\nnode.chat.out(message => {\n  return new Promise((resolve, reject) => {\n     node.warn(\"final message out\");\n     resolve(message);\n  });    \n});",
+        "codeJs": "node.chat.onChatId(msg => {\n  return msg.req.headers !== null ? msg.req.headers.from : 123465978;\n});\nnode.chat.onMessageId(msg => {\n  return msg._msgid != null ? msg._msgid : null;     \n});\nnode.chat.in(message => {\n  return new Promise((resolve, reject) => {\n    // email node put the content on the .payload, perhaps additional check if the .payload is a string\n    if (message.originalMessage.payload !== null) {\n      message.payload.type = 'message';\n      message.payload.content = message.originalMessage.payload;\n    }\n    resolve(message);\n  });\n});\n\nnode.chat.out(message => {\n  return new Promise((resolve, reject) => {\n     node.warn(\"first message out\");\n     resolve(message);\n  });    \n});\n\nnode.chat.out('message', message => {\n    var chat = message.chat();\n  return new Promise((resolve, reject) => {\n     message.to = chat.get('chatId');\n     node.warn(\"typed message out\");\n     node.warn(message);\n     resolve(message);\n  });    \n});\nnode.chat.out('quick-replies', message => {\n  var chat = message.chat();\n  return new Promise((resolve, reject) => {\n     message.to = chat.get('chatId');\n     node.warn(\"quick Replié out\");\n     node.warn(message);\n     resolve(message);\n  });    \n});\nnode.chat.out('inline-buttons', message => {\n  var chat = message.chat();\n  return new Promise((resolve, reject) => {\n     message.to = chat.get('chatId');\n     node.warn(\"buttons out\");\n     node.warn(message.payload);\n     resolve(message);\n  });    \n});\n",
         "platform": "universal",
         "noerr": 0,
-        "x": 210,
-        "y": 640,
+        "x": 170,
+        "y": 620,
         "wires": []
     },
     {
@@ -3323,30 +3579,11 @@
         "z": "2b38a8460eabdbe4",
         "bot": "237b1775a492a770",
         "botProduction": "",
-        "x": 390,
+        "x": 330,
         "y": 540,
         "wires": [
             [
-                "5dfbeb8146fef999"
-            ]
-        ]
-    },
-    {
-        "id": "5dfbeb8146fef999",
-        "type": "chatbot-message",
-        "z": "2b38a8460eabdbe4",
-        "name": "",
-        "message": [
-            {
-                "message": "Hello from universal receiver"
-            }
-        ],
-        "language": "none",
-        "x": 570,
-        "y": 540,
-        "wires": [
-            [
-                "e842db82c4028716"
+                "332fab0d4022f38c"
             ]
         ]
     },
@@ -3363,7 +3600,7 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1070,
+        "x": 1250,
         "y": 540,
         "wires": []
     },
@@ -3375,7 +3612,7 @@
         "botProduction": "",
         "track": false,
         "passThrough": true,
-        "x": 870,
+        "x": 1090,
         "y": 540,
         "wires": [
             [
@@ -3405,7 +3642,7 @@
         "payload": "",
         "payloadType": "date",
         "x": 140,
-        "y": 340,
+        "y": 280,
         "wires": [
             [
                 "cb1ecc84f8d525a3"
@@ -3427,7 +3664,7 @@
         "authType": "",
         "senderr": false,
         "x": 630,
-        "y": 340,
+        "y": 280,
         "wires": [
             [
                 "606afa6e1ace818a"
@@ -3448,7 +3685,7 @@
         "statusVal": "",
         "statusType": "auto",
         "x": 890,
-        "y": 340,
+        "y": 280,
         "wires": []
     },
     {
@@ -3478,7 +3715,7 @@
         "to": "",
         "reg": false,
         "x": 320,
-        "y": 340,
+        "y": 280,
         "wires": [
             [
                 "72bb1767308c08c9"
@@ -3497,17 +3734,137 @@
         "wires": []
     },
     {
-        "id": "e842db82c4028716",
+        "id": "ec64d75f50382248",
         "type": "chatbot-message",
         "z": "2b38a8460eabdbe4",
         "name": "",
         "message": [
             {
-                "message": "Hello from universal receiver number 2"
+                "message": "Hello 2"
             }
         ],
         "language": "none",
-        "x": 710,
+        "x": 490,
+        "y": 80,
+        "wires": [
+            [
+                "f46c2cea56ee2dd4"
+            ]
+        ]
+    },
+    {
+        "id": "17ebab08b1cfc1b6",
+        "type": "debug",
+        "z": "2b38a8460eabdbe4",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 330,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "f46c2cea56ee2dd4",
+        "type": "chatbot-quick-replies",
+        "z": "2b38a8460eabdbe4",
+        "name": "",
+        "message": "Bạn muốn mua gì?",
+        "buttons": [
+            {
+                "type": "quick-reply",
+                "label": "CRM",
+                "value": "/crm",
+                "url": ""
+            },
+            {
+                "type": "quick-reply",
+                "label": "Tổng đài",
+                "value": "/tongdai",
+                "url": ""
+            },
+            {
+                "type": "quick-reply",
+                "label": "Chatbot",
+                "value": "/chatbot",
+                "url": ""
+            }
+        ],
+        "x": 700,
+        "y": 80,
+        "wires": [
+            [
+                "25e1ec0915c167f9"
+            ]
+        ]
+    },
+    {
+        "id": "332fab0d4022f38c",
+        "type": "chatbot-inline-buttons",
+        "z": "2b38a8460eabdbe4",
+        "name": "",
+        "buttons": [
+            {
+                "type": "postback",
+                "label": "button1",
+                "value": "/button1",
+                "answer": "",
+                "alert": false,
+                "style": ""
+            },
+            {
+                "type": "postback",
+                "label": "button2",
+                "value": "/button2",
+                "answer": "",
+                "alert": false,
+                "style": ""
+            }
+        ],
+        "message": "Button something ",
+        "x": 500,
+        "y": 540,
+        "wires": [
+            [
+                "05b53950221119cd",
+                "cdebf7ab0f2ec4e9"
+            ]
+        ]
+    },
+    {
+        "id": "0537833b884d8d37",
+        "type": "chatbot-message",
+        "z": "2b38a8460eabdbe4",
+        "name": "",
+        "message": [
+            {
+                "message": "Mình là một con bot."
+            }
+        ],
+        "language": "none",
+        "x": 1170,
+        "y": 800,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "51f4910014e81f13",
+        "type": "chatbot-message",
+        "z": "2b38a8460eabdbe4",
+        "name": "",
+        "message": [
+            {
+                "message": "Mình là một con bot."
+            }
+        ],
+        "language": "none",
+        "x": 930,
         "y": 540,
         "wires": [
             [
@@ -3516,22 +3873,74 @@
         ]
     },
     {
-        "id": "ec64d75f50382248",
+        "id": "745e395c0ca61a63",
         "type": "chatbot-message",
         "z": "2b38a8460eabdbe4",
         "name": "",
         "message": [
             {
-                "message": "Hello"
+                "message": "Chào bạn."
             }
         ],
         "language": "none",
-        "x": 490,
-        "y": 80,
+        "x": 810,
+        "y": 540,
         "wires": [
             [
-                "25e1ec0915c167f9"
+                "51f4910014e81f13"
             ]
         ]
+    },
+    {
+        "id": "05b53950221119cd",
+        "type": "chatbot-quick-replies",
+        "z": "2b38a8460eabdbe4",
+        "name": "",
+        "message": "Mình có thể giúp mấy cái này. Chọn đi",
+        "buttons": [
+            {
+                "type": "quick-reply",
+                "label": "CRM",
+                "value": "/crm",
+                "url": ""
+            },
+            {
+                "type": "quick-reply",
+                "label": "Tổng đài",
+                "value": "/tongdai",
+                "url": ""
+            },
+            {
+                "type": "quick-reply",
+                "label": "Chatbot",
+                "value": "/chatbot",
+                "url": ""
+            }
+        ],
+        "x": 660,
+        "y": 540,
+        "wires": [
+            [
+                "745e395c0ca61a63",
+                "cdebf7ab0f2ec4e9"
+            ]
+        ]
+    },
+    {
+        "id": "cdebf7ab0f2ec4e9",
+        "type": "debug",
+        "z": "2b38a8460eabdbe4",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 710,
+        "y": 700,
+        "wires": []
     }
 ]
